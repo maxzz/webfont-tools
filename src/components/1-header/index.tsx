@@ -1,7 +1,7 @@
-import React from 'react'
-
 export function Header() {
-  return (
-    <div>Header</div>
-  )
+    return (
+        <div className="py-4 bg-primary-500/20">
+            
+        </div>
+    );
 }

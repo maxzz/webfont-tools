@@ -1,7 +1,7 @@
-import React from 'react'
-
 export function Footer() {
-  return (
-    <div>Footer</div>
-  )
+    return (
+        <div className="py-4 bg-primary-500/20">
+            
+        </div>
+    );
 }
