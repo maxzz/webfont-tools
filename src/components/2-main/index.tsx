@@ -1,12 +1,6 @@
 import { HTMLAttributes, InputHTMLAttributes, useState } from 'react';
 import { proxy, useSnapshot } from 'valtio';
-import { classNames } from '../../utils/classnames';
-
-
-
-//TODO: commit: WIP. add initial form state with valtio
-
-
+import { classNames } from '@/utils';
 
 const inputClasses = 'px-2 py-1 w-full bg-primary-200 border-primary-400 border rounded';
 
@@ -41,7 +35,7 @@ function MainForm() {
 
     return (
         <div>
-            <InputArea store={formData} name="fontText" label="Font" className="h-64" />
+            <InputArea store={formData} name="fontText" label="Font data" className="h-64" />
         </div>
     );
 }
