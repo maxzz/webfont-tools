@@ -51,9 +51,10 @@ async function convert(fontText: string) {
 
         const obj = xml2Js(fontData.xmlText);
         const glyphs = obj.svg.defs.font.glyph.map((item) => item._attributes);
-        console.log(glyphs);
         fontData.glyphs = glyphs;
-        
+
+        //console.log(glyphs);
+
     } catch (error) {
         console.log(error);
         fontData.xmlText = '';
@@ -64,13 +65,18 @@ async function convert(fontText: string) {
 function ShowGlyphs() {
     const snap = useSnapshot(fontData).glyphs;
     return (
-        <div className="flex flex-col space-y-2">
+        <div className="text-xs flex flex-col space-y-2">
             {snap.map((item) => (
-                <div className="flex space-x-2">
-                    <div className="w-8 h-8 bg-primary-200 border-primary-400 border rounded" />
+                <div className="px-1 py-1 border-primary-400 border rounded flex space-x-2" key={`${item.unicode}${item['glyph-name']}`}>
                     <div className="flex flex-col">
-                        <div>{item.unicode}</div>
+                        <div className="w-8 h-8 bg-primary-200 border-primary-400 border rounded flex items-center justify-center">{item.unicode}</div>
                         <div>{item.d}</div>
+
+                        <div className="border-primary-400 border rounded grid place-items-center">
+                            <svg className="w-8 h-8 bg-blue-300" viewBox="0 0 1000 1000" transform="scale(1,-1)">
+                                <path d={item.d} />
+                            </svg>
+                        </div>
                     </div>
                 </div>
             ))}
