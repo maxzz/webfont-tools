@@ -31,6 +31,12 @@ export async function getFont(base64: string) {
         // for svg path
         combinePath: false,
     });
-    
+
     console.log('font', font);
+
+    const newBuffer = font.write({ type: 'svg' });
+    const newStr = newBuffer.toString();
+
+    console.log('newStr', newStr);
+    return newStr;
 }
