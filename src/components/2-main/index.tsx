@@ -38,7 +38,7 @@ function Button({ children, className, ...rest }: { children: ReactNode; } & HTM
     );
 }
 
-function convert(fontText: string) {
+async function convert(fontText: string) {
     if (!fontText) {
         return;
     }
@@ -50,7 +50,8 @@ function convert(fontText: string) {
         // const encoder = new TextEncoder();
         // const buffer = encoder.encode(fontText);
 
-        getFont(fontText);
+        const res = await getFont(fontText);
+        fontData.xmlText = res;
     } catch (error) {
         console.log(error);
     }
@@ -59,7 +60,9 @@ function convert(fontText: string) {
 function ConvertForm() {
     return (
         <div className="flex flex-col space-y-2">
-            <InputArea className="h-64 text-xs" store={fontData} name="fontText" label="Font data" />
+            <InputArea className="h-64 text-xs" store={fontData} name="fontText" label="Woff2 font data" />
+
+            <InputArea className="h-64 text-xs" store={fontData} name="xmlText" label="SVG font" />
 
             <Button
             className="self-end"

@@ -21,7 +21,7 @@ export async function getFont(base64: string) {
         // support ttf, woff, woff2, eot, otf, svg
         type: 'woff2',
         // only read `a`, `b` glyphs
-        subset: [65, 66],
+        //subset: [65, 66],
         // save font hinting
         hinting: true,
         // transform ttf compound glyph to simple
