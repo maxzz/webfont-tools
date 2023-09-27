@@ -6,6 +6,7 @@ import { FontData, fontData, getFont, xml2Js } from '@/storage';
 const inputClasses = 'px-2 py-1 w-full bg-primary-200 border-primary-400 border rounded';
 export const inputFocusClasses = "focus:ring-primary-600 dark:focus:ring-primary-400 focus:ring-offset-primary-200 dark:focus:ring-offset-primary-800 focus:ring-1 focus:ring-offset-1 focus:outline-none";
 
+/*
 function Input({ store, name, label, className, ...rest }: { store: FontData, name: keyof FontData; label: string; } & InputHTMLAttributes<HTMLInputElement>) {
     const snap = useSnapshot(store);
     return (
@@ -15,6 +16,7 @@ function Input({ store, name, label, className, ...rest }: { store: FontData, na
         </div>
     );
 }
+*/
 
 function InputArea<T extends {}>({ store, name, label, className, ...rest }: { store: T, name: keyof T; label: string; } & HTMLAttributes<HTMLTextAreaElement>) {
     const snap = useSnapshot(store) as T;
@@ -48,12 +50,32 @@ async function convert(fontText: string) {
         fontData.xmlText = res;
 
         const obj = xml2Js(fontData.xmlText);
-        console.log(obj);
+        const glyphs = obj.svg.defs.font.glyph.map((item) => item._attributes);
+        console.log(glyphs);
+        fontData.glyphs = glyphs;
         
     } catch (error) {
         console.log(error);
         fontData.xmlText = '';
+        fontData.glyphs = [];
     }
+}
+
+function ShowGlyphs() {
+    const snap = useSnapshot(fontData).glyphs;
+    return (
+        <div className="flex flex-col space-y-2">
+            {snap.map((item) => (
+                <div className="flex space-x-2">
+                    <div className="w-8 h-8 bg-primary-200 border-primary-400 border rounded" />
+                    <div className="flex flex-col">
+                        <div>{item.unicode}</div>
+                        <div>{item.d}</div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
 }
 
 function ConvertForm() {
@@ -62,6 +84,8 @@ function ConvertForm() {
             <InputArea className="h-64 text-xs" store={fontData} name="fontText" label="Woff2 font data" spellCheck="false" />
 
             <InputArea className="h-64 text-xs" store={fontData} name="xmlText" label="SVG font" spellCheck="false" />
+
+            <ShowGlyphs />
 
             <Button
                 className="self-end"
