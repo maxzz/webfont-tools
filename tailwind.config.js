@@ -9,7 +9,10 @@ export default {
                 primary: colors.zinc,
                 secondary: colors.green,
             },
+            gridTemplateColumns: {
+                'fluid': 'repeat(auto-fit, minmax(6rem, 1fr))',
+            },
         },
     },
     plugins: [],
-}
+};
