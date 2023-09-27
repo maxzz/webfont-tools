@@ -1,7 +1,7 @@
 import { HTMLAttributes, InputHTMLAttributes, ReactNode, useState } from 'react';
 import { proxy, useSnapshot } from 'valtio';
 import { classNames } from '@/utils';
-import { FontData, fontData, getFont } from '@/storage';
+import { FontData, fontData, getFont, xml2Js } from '@/storage';
 
 const inputClasses = 'px-2 py-1 w-full bg-primary-200 border-primary-400 border rounded';
 export const inputFocusClasses = "focus:ring-primary-600 dark:focus:ring-primary-400 focus:ring-offset-primary-200 dark:focus:ring-offset-primary-800 focus:ring-1 focus:ring-offset-1 focus:outline-none";
@@ -46,6 +46,10 @@ async function convert(fontText: string) {
     try {
         const res = await getFont(fontText);
         fontData.xmlText = res;
+
+        const obj = xml2Js(fontData.xmlText);
+        console.log(obj);
+        
     } catch (error) {
         console.log(error);
         fontData.xmlText = '';

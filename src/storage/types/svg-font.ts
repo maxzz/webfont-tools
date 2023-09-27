@@ -48,7 +48,7 @@ export type Svg = {
     };
 }
 
-export type Xml = {
+export type XmlSvgFile = {
     "?xml": {
         _attributes: {
             version: string;
@@ -59,7 +59,7 @@ export type Xml = {
 }
 
 /*
-const xml: Xml = {
+const xml: XmlSvgFile = {
     "?xml": {
         _attributes: {
             version: "1.0",
@@ -124,7 +124,7 @@ const xml: Xml = {
 };
 */
 
-/*
+/* // raw data
 {
     "?xml": {
         "_attributes": {
