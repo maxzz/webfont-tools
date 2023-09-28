@@ -16,7 +16,7 @@ export async function createFontFromBuffer(buffer: ArrayBuffer, { srcType }: { s
     return font;
 }
 
-export async function getFont(base64: string): Promise<string> {
+export async function base64ToSvgFont(base64: string): Promise<string> {
     const array = base64ToArrayBuffer(base64);
 
     const font = await createFontFromBuffer(array.buffer, { srcType: 'woff2' });

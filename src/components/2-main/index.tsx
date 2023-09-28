@@ -1,7 +1,7 @@
 import { HTMLAttributes, InputHTMLAttributes, ReactNode, useState } from 'react';
 import { proxy, useSnapshot } from 'valtio';
 import { classNames } from '@/utils';
-import { FontData, fontData, getFont, xml2Js } from '@/store';
+import { FontData, fontData, base64ToSvgFont, xml2Js, convert } from '@/store';
 
 const inputClasses = 'px-2 py-1 w-full bg-primary-200 border-primary-400 border rounded';
 export const inputFocusClasses = "focus:ring-primary-600 dark:focus:ring-primary-400 focus:ring-offset-primary-200 dark:focus:ring-offset-primary-800 focus:ring-1 focus:ring-offset-1 focus:outline-none";
@@ -39,27 +39,6 @@ function Button({ children, className, ...rest }: { children: ReactNode; } & HTM
             {children}
         </button>
     );
-}
-
-async function convert(fontText: string) {
-    if (!fontText) {
-        return;
-    }
-    try {
-        const res = await getFont(fontText);
-        fontData.xmlText = res;
-
-        const obj = xml2Js(fontData.xmlText);
-        const glyphs = obj.svg.defs.font.glyph.map((item) => item._attributes);
-        fontData.glyphs = glyphs;
-
-        //console.log(glyphs);
-
-    } catch (error) {
-        console.log(error);
-        fontData.xmlText = '';
-        fontData.glyphs = [];
-    }
 }
 
 function ShowGlyphs() {
