@@ -6,13 +6,13 @@ import { TextValueFields, TextValueKeys } from '@/store/types';
 
 const inputClasses = 'px-2 py-1 w-full bg-primary-200 border-primary-400 border rounded';
 
-export function Input<TStore extends object, T extends TextValueFields<TStore>>({ store, name, label, className, ...rest }: {
+export function Input<TStore extends object>({ store, name, label, className, ...rest }: {
     store: TStore;
     name: TextValueKeys<TStore>;
     label: string;
 } & InputHTMLAttributes<HTMLInputElement>
 ) {
-    const snap = useSnapshot(store) as T;
+    const snap = useSnapshot(store as any);
     return (
         <div className="">
             <div className="">
@@ -21,7 +21,7 @@ export function Input<TStore extends object, T extends TextValueFields<TStore>>(
 
             <input
                 className={classNames(inputClasses, className)}
-                value={snap[name] as string}
+                value={snap[name]}
                 onChange={(e) => { (store as any)[name] = e.target.value; }}
                 {...rest}
             />
@@ -29,13 +29,13 @@ export function Input<TStore extends object, T extends TextValueFields<TStore>>(
     );
 }
 
-export function InputArea<TStore extends object, T extends TextValueFields<TStore>>({ store, name, label, className, ...rest }: {
+export function InputArea<TStore extends object>({ store, name, label, className, ...rest }: {
     store: TStore;
     name: TextValueKeys<TStore>;
     label: string;
 } & HTMLAttributes<HTMLTextAreaElement>
 ) {
-    const snap = useSnapshot(store) as T;
+    const snap = useSnapshot(store as any);
     return (
         <div className="">
             <div className="">
@@ -44,7 +44,7 @@ export function InputArea<TStore extends object, T extends TextValueFields<TStor
 
             <textarea
                 className={classNames(inputClasses, inputFocusClasses, className)}
-                value={snap[name] as string}
+                value={snap[name]}
                 onChange={(e) => { (store as any)[name] = e.target.value; }}
                 {...rest}
             />
