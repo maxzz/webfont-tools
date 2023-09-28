@@ -8,7 +8,7 @@ const inputClasses = 'px-2 py-1 w-full bg-primary-200 border-primary-400 border 
 
 export function Input<TStore extends object, T extends Record<string, any> = TextValueFields<TStore>>({ store, name, label, className, ...rest }: {
     store: TStore;
-    name: keyof T;
+    name: TextValueKeys<TStore>;
     label: string;
 } & InputHTMLAttributes<HTMLInputElement>
 ) {
@@ -31,7 +31,7 @@ export function Input<TStore extends object, T extends Record<string, any> = Tex
 
 export function InputArea<TStore extends object, T extends Record<string, any> = TextValueFields<TStore>>({ store, name, label, className, ...rest }: {
     store: TStore;
-    name: keyof T;
+    name: TextValueKeys<TStore>;
     label: string;
 } & HTMLAttributes<HTMLTextAreaElement>
 ) {
