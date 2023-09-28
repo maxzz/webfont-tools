@@ -1,34 +1,30 @@
-import { Font, woff2 } from 'fonteditor-core';
+import { Font, FontEditor, woff2 } from 'fonteditor-core';
 import { base64ToArrayBuffer } from '@/utils';
 
-export async function getFont(base64: string) {
-    //debugger;
+export async function createFontFromBuffer(buffer: ArrayBuffer, { srcType }: { srcType: FontEditor.FontType;}): Promise<FontEditor.Font> {
+    await woff2.init('./woff2.wasm');
+    
+    const font = Font.create(buffer, {  // read font data, support ArrayBuffer | Buffer | string
+        type: srcType,                  // support ttf, woff, woff2, eot, otf, svg
+        //subset: [65, 66],           // only read `a`, `b` glyphs
+        hinting: true,                  // save font hinting
+        compound2simple: true,          // transform ttf compound glyph to simple
+        inflate: undefined,             // inflate function for woff
+        combinePath: false,             // for svg path
+    });
 
+    return font;
+}
+
+export async function getFont(base64: string): Promise<string> {
     const array = base64ToArrayBuffer(base64);
 
-    await woff2.init('./woff2.wasm');
-
-    // read font data, support ArrayBuffer | Buffer | string
-    const font = Font.create(array.buffer, {
-        // support ttf, woff, woff2, eot, otf, svg
-        type: 'woff2',
-        // only read `a`, `b` glyphs
-        //subset: [65, 66],
-        // save font hinting
-        hinting: true,
-        // transform ttf compound glyph to simple
-        compound2simple: true,
-        // inflate function for woff
-        inflate: undefined,
-        // for svg path
-        combinePath: false,
-    });
+    const font = await createFontFromBuffer(array.buffer, { srcType: 'woff2' });
 
     console.log('font', font);
 
     const newBuffer = font.write({ type: 'svg' });
     const newStr = newBuffer.toString();
 
-    console.log('newStr', newStr);
     return newStr;
 }
