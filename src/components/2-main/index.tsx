@@ -1,7 +1,7 @@
 import { HTMLAttributes, InputHTMLAttributes, ReactNode, useState } from 'react';
 import { proxy, useSnapshot } from 'valtio';
 import { classNames } from '@/utils';
-import { FontData, fontData, base64ToSvgFont, xml2Js, convert } from '@/store';
+import { FontData, fontData, base64ToSvgFont, xml2Js, convertToSvg } from '@/store';
 
 const inputClasses = 'px-2 py-1 w-full bg-primary-200 border-primary-400 border rounded';
 export const inputFocusClasses = "focus:ring-primary-600 dark:focus:ring-primary-400 focus:ring-offset-primary-200 dark:focus:ring-offset-primary-800 focus:ring-1 focus:ring-offset-1 focus:outline-none";
@@ -66,18 +66,13 @@ function ShowGlyphs() {
 function ConvertForm() {
     return (
         <div className="flex flex-col space-y-2">
-            <InputArea className="h-64 text-xs" store={fontData} name="fontText" label="Woff2 font data" spellCheck="false" />
+            <InputArea className="h-64 text-xs" store={fontData} name="fontText" label="WOFF2 font data" spellCheck="false" />
 
             <InputArea className="h-64 text-xs" store={fontData} name="xmlText" label="SVG font" spellCheck="false" />
 
             <ShowGlyphs />
 
-            <Button
-                className="self-end"
-                onClick={() => {
-                    convert(fontData.fontText);
-                }}
-            >
+            <Button className="self-end" onClick={() => convertToSvg(fontData.fontText)}>
                 Convert
             </Button>
         </div>
