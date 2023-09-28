@@ -9,7 +9,12 @@ type FontDataTextValueKeys = TextValueKeys<FontData>;
 
 const inputClasses = 'px-2 py-1 w-full bg-primary-200 border-primary-400 border rounded';
 
-export function Input({ store, name, label, className, ...rest }: { store: FontData, name: FontDataTextValueKeys; label: string; } & InputHTMLAttributes<HTMLInputElement>) {
+export function Input({ store, name, label, className, ...rest }: {
+    store: FontData;
+    name: FontDataTextValueKeys;
+    label: string;
+} & InputHTMLAttributes<HTMLInputElement>
+) {
     const snap = useSnapshot(store);
     return (
         <div className="">
@@ -27,7 +32,12 @@ export function Input({ store, name, label, className, ...rest }: { store: FontD
     );
 }
 
-export function InputArea<T extends FontData>({ store, name, label, className, ...rest }: { store: T, name: TextValueKeys<FontData>; label: string; } & HTMLAttributes<HTMLTextAreaElement>) {
+export function InputArea<T extends FontData>({ store, name, label, className, ...rest }: {
+    store: T;
+    name: TextValueKeys<FontData>;
+    label: string;
+} & HTMLAttributes<HTMLTextAreaElement>
+) {
     const snap = useSnapshot(store);
     return (
         <div className="">
