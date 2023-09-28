@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { atom, PrimitiveAtom, useAtomValue, useSetAtom } from "jotai";
-import { DoDroppedFilesAtom, doDroppedFilesAtom } from "@/storage";
+import { DoDroppedFilesAtom, doDroppedFilesAtom } from "@/store";
 
 export function DragHandlers({ doDroppedFilesAtom, activeAtom }: { doDroppedFilesAtom: DoDroppedFilesAtom; activeAtom: PrimitiveAtom<boolean>; }) {
     const setDropActive = useSetAtom(activeAtom);
