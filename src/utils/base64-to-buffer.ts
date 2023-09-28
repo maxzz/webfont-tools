@@ -1,8 +1,15 @@
 export function base64ToArrayBuffer(base64: string) {
-    var binaryString = atob(base64);
-    var bytes = new Uint8Array(binaryString.length);
-    for (var i = 0; i < binaryString.length; i++) {
-        bytes[i] = binaryString.charCodeAt(i);
+    try {
+        const binaryString = atob(base64);
+
+        const bytes = new Uint8Array(binaryString.length);
+    
+        for (var i = 0; i < binaryString.length; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+    
+        return bytes;
+    } catch (error) {
+        throw new Error(`Failed to convert base64 to array buffer.`);        
     }
-    return bytes;
 }

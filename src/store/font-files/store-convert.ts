@@ -1,5 +1,6 @@
 import { fontData } from "../font-data";
 import { base64ToSvgFont, xml2Js } from ".";
+import { toastWarning } from "@/components/ui";
 
 export async function convert(fontText: string) {
     if (!fontText) {
@@ -16,7 +17,8 @@ export async function convert(fontText: string) {
         //console.log(glyphs);
 
     } catch (error) {
-        console.log(error);
+        const msg = error instanceof Error ? error.message : error!.toString();
+        toastWarning(`Failed to convert font:\n${msg}`);
         fontData.xmlText = '';
         fontData.glyphs = [];
     }
