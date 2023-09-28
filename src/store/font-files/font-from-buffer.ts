@@ -1,15 +1,5 @@
 import { Font, woff2 } from 'fonteditor-core';
-import { XMLParser } from 'fast-xml-parser';
-import { XmlSvgFile } from './types';
-
-function base64ToArrayBuffer(base64: string) {
-    var binaryString = atob(base64);
-    var bytes = new Uint8Array(binaryString.length);
-    for (var i = 0; i < binaryString.length; i++) {
-        bytes[i] = binaryString.charCodeAt(i);
-    }
-    return bytes;
-}
+import { base64ToArrayBuffer } from '@/utils';
 
 export async function getFont(base64: string) {
     //debugger;
@@ -41,19 +31,4 @@ export async function getFont(base64: string) {
 
     console.log('newStr', newStr);
     return newStr;
-}
-
-//
-
-export const parseOptionsRead = {
-    attributeNamePrefix: "",
-    attributesGroupName: "_attributes",
-    ignoreAttributes: false,
-    allowBooleanAttributes: true,
-};
-
-export function xml2Js(cnt: string) {
-    const parser = new XMLParser(parseOptionsRead);
-    const obj = parser.parse(cnt); //console.log('%craw', 'color: green', JSON.stringify(obj, null, 4));
-    return obj as XmlSvgFile;
 }
