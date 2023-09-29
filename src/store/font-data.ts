@@ -14,7 +14,7 @@ export const fontDataSource = proxy<FontDataSource>({
 
 // Font data
 
-type MatchUriData = {
+type DataUri = {
     mime: string;   // 'application/octet-stream' | 'image/png' | 'application/font-woff2'
     enc?: string;   // charset=utf-8
     base: string;   // base64
@@ -24,28 +24,34 @@ type MatchUriData = {
 export type FontData = {
     fontText: string;
 
-    dataUri?: MatchUriData | undefined | null;
+    dataUri?: DataUri | undefined | null;
+    isUrl?: boolean;
+
     xmlText: string;
     glyphs: GlyphAttributes[];
 };
 
 export const fontData = proxy<FontData>({
-    fontText: '',
+    fontText: fontDataSource.text,
     xmlText: '',
     glyphs: [],
 });
 
 // Source text for the font parsing
 
-const reDataUri = /^data:(?<mime>[\w\/\+-]*);?(?<enc>(?:charset=[\w-]+)?);?(?<base>base64?),(?<data>[a-z0-9\!\$\&\'\,\(\)\*\+\,\;\=\-\.\_\~\:\@\/\?\%]*)\s*/gi;
+function init() {
+    const reDataUri = /^\s*data:(?<mime>[\w\/\+-]*);?(?<enc>(?:charset=[\w-]+)?);?(?<base>base64?),(?<data>[a-z0-9\!\$\&\'\,\(\)\*\+\,\;\=\-\.\_\~\:\@\/\?\%]*)\s*/gi;
 
-function checkDataUri(text: string) {
-    //TODO: add url protocol processing
-    fontData.dataUri = reDataUri.exec(text)?.groups as MatchUriData;
+    subscribe(fontDataSource, () => {
+        fontData.fontText = fontDataSource.text;
+    
+        fontData.dataUri = reDataUri.exec(fontDataSource.text)?.groups as DataUri;
+    
+        fontData.isUrl = false;
+        if (fontData.dataUri) {
+            //TODO: add url protocol processing
+        }
+    });
 }
 
-subscribe(fontDataSource, () => {
-    fontData.fontText = fontDataSource.text;
-
-    checkDataUri(fontDataSource.text);
-});
+init();

@@ -9,15 +9,17 @@ const inputClasses = 'px-2 py-1 w-full bg-primary-200 border-primary-400 border 
 export function Input<TStore extends object>({ store, name, label, className, ...rest }: {
     store: TStore;
     name: TextValueKeys<TStore>;
-    label: string;
+    label?: string;
 } & InputHTMLAttributes<HTMLInputElement>
 ) {
-    const snap = useSnapshot(store as any, {sync: true});
+    const snap = useSnapshot(store as any, { sync: true });
     return (
         <div className="">
-            <div className="">
-                {label}
-            </div>
+            {label && (
+                <div className="">
+                    {label}
+                </div>
+            )}
 
             <input
                 className={classNames(inputClasses, className)}
@@ -32,15 +34,17 @@ export function Input<TStore extends object>({ store, name, label, className, ..
 export function InputArea<TStore extends object>({ store, name, label, className, ...rest }: {
     store: TStore;
     name: TextValueKeys<TStore>;
-    label: string;
+    label?: string;
 } & HTMLAttributes<HTMLTextAreaElement>
 ) {
-    const snap = useSnapshot(store as any, {sync: true});
+    const snap = useSnapshot(store as any, { sync: true });
     return (
         <div className="">
-            <div className="">
-                {label}
-            </div>
+            {label && (
+                <div className="">
+                    {label}
+                </div>
+            )}
 
             <textarea
                 className={classNames(inputClasses, inputFocusClasses, className)}

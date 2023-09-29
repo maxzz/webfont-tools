@@ -10,6 +10,7 @@ export function base64ToArrayBuffer(base64: string) {
     
         return bytes;
     } catch (error) {
-        throw new Error(`Failed to convert base64 to array buffer.`);        
+        console.error(error);
+        throw new Error(`Failed to convert base64 to array buffer.`);
     }
 }
