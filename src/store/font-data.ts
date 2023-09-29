@@ -11,18 +11,19 @@ type MatchUriData = {
 
 export type FontDataSource = {
     text: string;
-    dataUri?: MatchUriData | undefined | null;
 };
 
 export const fontDataSource = proxy<FontDataSource>({
-    // text: tests.defaultFontDataStr,
-    text: 'data:application/font-woff2;charset=utf-8;base64,1',
+    text: tests.defaultFontDataStr,
+    // text: 'data:application/font-woff2;charset=utf-8;base64,1',
 });
 
 //
 
 export type FontData = {
     fontText: string;
+
+    dataUri?: MatchUriData | undefined | null;
     xmlText: string;
     glyphs: GlyphAttributes[];
 };
@@ -54,7 +55,7 @@ export function checkDataUri(text: string) {
     //OK const re = /data:(?<mime>[\w/\-\.]+);(?<encoding>\w+),(?<data>.*)/gi;
     //const re = /data:(?<data>[a-z0-9\!\$\&\'\,\(\)\*\+\,\;\=\-\.\_\~\:\@\/\?\%\s]*\s*)$/gi;
     const match = re.exec(text);
-    fontDataSource.dataUri = match?.groups as MatchUriData;
+    fontData.dataUri = match?.groups as MatchUriData;
 
     console.log('match', match);
 }
