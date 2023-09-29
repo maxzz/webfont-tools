@@ -12,7 +12,7 @@ export function Input<TStore extends object>({ store, name, label, className, ..
     label: string;
 } & InputHTMLAttributes<HTMLInputElement>
 ) {
-    const snap = useSnapshot(store as any);
+    const snap = useSnapshot(store as any, {sync: true});
     return (
         <div className="">
             <div className="">
@@ -35,7 +35,7 @@ export function InputArea<TStore extends object>({ store, name, label, className
     label: string;
 } & HTMLAttributes<HTMLTextAreaElement>
 ) {
-    const snap = useSnapshot(store as any);
+    const snap = useSnapshot(store as any, {sync: true});
     return (
         <div className="">
             <div className="">
