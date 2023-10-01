@@ -2,6 +2,17 @@ import { fontData } from "../font-data";
 import { base64ToSvgFont, xml2Js } from ".";
 import { toastWarning } from "@/components/ui";
 
+function formatXml(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
+    var formatted = '', indent= '';
+    tab = tab || '\t';
+    xml.split(/>\s*</).forEach(function(node) {
+        if (node.match( /^\/\w/ )) indent = indent.substring(tab.length); // decrease indent by one 'tab'
+        formatted += indent + '<' + node + '>\r\n';
+        if (node.match( /^<?\w[^>]*[^\/]$/ )) indent += tab;              // increase indent
+    });
+    return formatted.substring(1, formatted.length-3);
+}
+
 export async function convertToSvg() {
     try {
         let fontText = fontData.fontText;
@@ -16,11 +27,9 @@ export async function convertToSvg() {
         }
     
         const xml = await base64ToSvgFont(fontText);
-        fontData.xmlText = xml;
+        fontData.xmlText = formatXml(xml);
 
         const obj = xml2Js(fontData.xmlText);
-
-        console.log('obj', obj);
 
         let glyphsRaw = obj?.svg?.defs?.font?.glyph;
         if (!glyphsRaw) {

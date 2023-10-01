@@ -40,12 +40,18 @@ export const fontData = proxy<FontData>({
 // Source text for the font parsing
 
 function init() {
-    const reDataUri = /^\s*data:(?<mime>[\w\/\+-]*);?(?<enc>(?:charset=[\w-]+)?);?(?<base>base64?),(?<data>[a-z0-9\!\$\&\'\,\(\)\*\+\,\;\=\-\.\_\~\:\@\/\?\%]*)\s*/gi;
+    const reDataUri = /^\s*data:(?<mime>[\w\/\+-]*);?(?<enc>(?:charset=[\w-]+)?);?(?<base>base64?),(?<data>[a-z0-9\!\$\&\'\,\(\)\*\+\,\;\=\-\.\_\~\:\@\/\?\%]*)\s*$/i;
+
+    updateUriData();
+
+    function updateUriData() {
+        fontData.dataUri = reDataUri.exec(fontDataSource.text)?.groups as DataUri;
+    }
 
     subscribe(fontDataSource, () => {
         fontData.fontText = fontDataSource.text;
     
-        fontData.dataUri = reDataUri.exec(fontDataSource.text)?.groups as DataUri;
+        updateUriData();
     
         fontData.isUrl = false;
         if (fontData.dataUri) {

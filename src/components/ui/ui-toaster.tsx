@@ -32,13 +32,19 @@ export function UIToaster() {
 }
 
 export const toastWarning: typeof orgToast.custom = (message, options) => {
-    return orgToast(message,
-        {...{ style: { backgroundColor: 'tomato' } }, ...options}
-    );
+    return orgToast(message, {
+        ...{
+            style: {
+                backgroundColor: 'red',
+            }
+        },
+        ...options,
+    });
 };
 
 export function toast(message: string) {
     console.log(`%c${message}`, 'color: orange');
+    
     toastWarning(message);
 }
 
