@@ -1,19 +1,29 @@
 import { fontData, convertToSvg, fontDataSource } from '@/store';
 import { ShowGlyphs } from './view-glyphs';
 import { Button, InputArea } from '../ui';
+import { IconMenuHamburger } from '../ui/icons/normal';
+
+function FontInputTitle() {
+    return (
+        <div className="">
+            <div className="">
+                WOFF2 font data
+            </div>
+            <div className="">
+                <Button className="px-2 py-1">
+                    <IconMenuHamburger className="w-4 h-4" />
+                    Clear
+                </Button>
+            </div>
+        </div>
+
+    );
+}
 
 function FontInput() {
     return (
         <div className="">
-            <div className="">
-                <div className="">
-                    WOFF2 font data
-                </div>
-                <div className="">
-
-                </div>
-            </div>
-
+            <FontInputTitle />
             <InputArea className="h-64 text-xs" store={fontDataSource} name="text" spellCheck="false" />
         </div>
     );
