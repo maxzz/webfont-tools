@@ -24,7 +24,8 @@ rounded-lg shadow-md \
 
 const itemClasses = " \
 px-2 py-2 text-xs  \
-text-gray-400 dark:text-gray-500 focus:bg-gray-50 dark:focus:bg-gray-900 \
+text-gray-950 dark:text-gray-500 \
+focus:bg-gray-50 dark:focus:bg-gray-900 \
 data-[highlighted]:bg-gray-300 \
 dark:data-[highlighted]:bg-gray-950 \
 outline-none rounded-md select-none cursor-default flex items-center \
@@ -43,7 +44,7 @@ export const DropdownMenu = ({ trigger, onCommand, items }: DropdownMenuProps) =
                         {items.map(({ id, label, icon, shortcut }, idx) => (
                             <dm.Item key={id} className={itemClasses} onClick={() => onCommand(id)}>
                                 {icon}
-                                <span className="flex-grow text-gray-700 dark:text-gray-300">
+                                <span className="flex-grow">
                                     {label}
                                 </span>
                                 {shortcut && <span className="text-xs">{shortcut}</span>}

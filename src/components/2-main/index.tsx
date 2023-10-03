@@ -2,7 +2,7 @@ import { fontData, convertToSvg, fontDataSource } from '@/store';
 import { ShowGlyphs } from './view-glyphs';
 import { Button, InputArea } from '../ui';
 import { IconMenuHamburger } from '../ui/icons/normal';
-import { DropdownMenu, MenuItemType } from './ui-radix-menu';
+import { DropdownMenu, MenuItemType } from '../ui/ui-dropdown-menu';
 
 const generalMenuItems: MenuItemType[] = [
     {
