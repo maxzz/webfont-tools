@@ -17,6 +17,7 @@ function FontInputTitle() {
                             <IconMenuHamburger className="w-4 h-4" />
                         </Button>
                     }
+                    onCommand={(id) => { console.log(id); }}
                 />
             </div>
         </div>

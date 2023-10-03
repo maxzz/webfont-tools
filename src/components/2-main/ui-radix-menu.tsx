@@ -2,18 +2,21 @@ import { ReactNode } from "react";
 import * as dm from "@radix-ui/react-dropdown-menu";
 import { Button } from "../ui";
 
-interface RadixMenuItem {
+export interface MenuItemType {
+    id: string;
     label: string;
     shortcut?: string;
     icon?: ReactNode;
 }
 
-const generalMenuItems: RadixMenuItem[] = [
+const generalMenuItems: MenuItemType[] = [
     {
+        id: "new-file",
         label: "New File",
         shortcut: "⌘+N",
     },
     {
+        id: "open-settings",
         label: "Settings",
         shortcut: "⌘+,",
     },
@@ -21,6 +24,7 @@ const generalMenuItems: RadixMenuItem[] = [
 
 interface DropdownMenuProps {
     trigger?: ReactNode;
+    onCommand: (id: string) => void;
 }
 
 const contentClasses = " \
@@ -37,7 +41,7 @@ text-gray-400 dark:text-gray-500 focus:bg-gray-50 dark:focus:bg-gray-900 \
 outline-none rounded-md select-none cursor-default flex items-center \
 ";
 
-export const DropdownMenu = ({ trigger }: DropdownMenuProps) => {
+export const DropdownMenu = ({ trigger, onCommand }: DropdownMenuProps) => {
     return (
         <div className="relative inline-block text-left">
             <dm.Root>
@@ -46,9 +50,9 @@ export const DropdownMenu = ({ trigger }: DropdownMenuProps) => {
                 </dm.Trigger>
 
                 <dm.Portal>
-                    <dm.Content align="end" sideOffset={5} className={contentClasses} onClick={() => console.log('2')}>
-                        {generalMenuItems.map(({ label, icon, shortcut }, i) => (
-                            <dm.Item key={`${label}-${i}`} className={itemClasses} onClick={() => console.log('1')}>
+                    <dm.Content align="end" sideOffset={5} className={contentClasses}>
+                        {generalMenuItems.map(({ id, label, icon, shortcut }, idx) => (
+                            <dm.Item key={id} className={itemClasses} onClick={() => onCommand(id)}>
                                 {icon}
                                 <span className="flex-grow text-gray-700 dark:text-gray-300">
                                     {label}
