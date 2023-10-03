@@ -19,6 +19,7 @@ interface DropdownMenuProps {
 }
 
 const contentClasses = " \
+px-1.5 py-1 \
 bg-white dark:bg-gray-800 \
 radix-side-top:animate-slide-up \
 radix-side-bottom:animate-slide-down \

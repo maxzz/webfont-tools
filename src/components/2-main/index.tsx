@@ -17,7 +17,7 @@ const generalMenuItems: MenuItemType[] = [
     },
 ];
 
-const containerClasses = "px-1.5 py-1 w-20";
+const containerClasses = "w-20";
 
 function FontInputTitle() {
     return (
