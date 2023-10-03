@@ -28,6 +28,7 @@ function FontInputTitle() {
             <div className="">
                 <DropdownMenu
                     containerClasses={containerClasses}
+                    menuContentProps={{sideOffset: 1}}
                     trigger={
                         <Button className="p-2">
                             <IconMenuHamburger className="w-4 h-4" />

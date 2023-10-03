@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import * as dm from "@radix-ui/react-dropdown-menu";
 import { classNames } from "@/utils";
+import { MenuContentProps } from "@radix-ui/react-dropdown-menu";
 
 export interface MenuItemType {
     id: string;
@@ -14,6 +15,7 @@ interface DropdownMenuProps {
     onCommand: (id: string) => void;
     items: MenuItemType[];
     containerClasses: string;
+    menuContentProps?: MenuContentProps;
 }
 
 const contentClasses = " \
@@ -32,7 +34,7 @@ dark:data-[highlighted]:bg-gray-950 \
 outline-none rounded-md select-none cursor-default flex items-center \
 ";
 
-export const DropdownMenu = ({ trigger, onCommand, items, containerClasses }: DropdownMenuProps) => {
+export const DropdownMenu = ({ trigger, onCommand, items, containerClasses, menuContentProps }: DropdownMenuProps) => {
     return (
         <div className="relative inline-block text-left">
             <dm.Root>
@@ -41,7 +43,7 @@ export const DropdownMenu = ({ trigger, onCommand, items, containerClasses }: Dr
                 </dm.Trigger>
 
                 <dm.Portal>
-                    <dm.Content align="end" sideOffset={5} className={classNames(contentClasses, containerClasses)}>
+                    <dm.Content align="end" {...menuContentProps} className={classNames(contentClasses, containerClasses)}>
                         {items.map(({ id, label, icon, shortcut }, idx) => (
                             <dm.Item key={id} className={itemClasses} onClick={() => onCommand(id)}>
                                 {icon}
