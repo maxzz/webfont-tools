@@ -4,7 +4,7 @@ import { Button, InputArea } from '../ui';
 import { IconMenuHamburger } from '../ui/icons/normal';
 import { DropdownMenu, MenuItemType } from '../ui/ui-dropdown-menu';
 
-const generalMenuItems: readonly MenuItemType[] = [
+const topMenuItems: readonly MenuItemType[] = [
     {
         id: "new-file",
         label: "New File",
@@ -18,14 +18,14 @@ const containerClasses = "w-20";
 
 function FontInputTitle() {
     function onCommand(id: string) {
-        type TKeys = (typeof generalMenuItems)[number]['id'];
-        switch (id as TKeys) {
+        switch (id as (typeof topMenuItems)[number]['id']) {
             case "new-file":
+                console.log(id);
                 break;
             case "open-settings":
+                console.log(id);
                 break;
         }
-        console.log(id);
     }
     return (
         <div className="py-1 select-none flex items-center justify-between">
@@ -39,7 +39,7 @@ function FontInputTitle() {
                             <IconMenuHamburger className="w-4 h-4" />
                         </Button>
                     }
-                    items={generalMenuItems}
+                    items={topMenuItems}
                     containerClasses={containerClasses}
                     menuContentProps={{ sideOffset: 1 }}
                     onCommand={onCommand}
