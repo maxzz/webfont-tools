@@ -7,7 +7,7 @@ export const Button = forwardRef<HTMLButtonElement, HTMLAttributes<HTMLButtonEle
         return (
             <button
                 ref={ref}
-                className={classNames('bg-primary-200 border-primary-400 border rounded', inputFocusClasses, className)}
+                className={classNames('bg-primary-200 border-primary-400 border rounded select-none', inputFocusClasses, className)}
                 {...rest}
             >
                 {children}

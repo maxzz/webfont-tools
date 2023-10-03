@@ -2,20 +2,22 @@ import { fontData, convertToSvg, fontDataSource } from '@/store';
 import { ShowGlyphs } from './view-glyphs';
 import { Button, InputArea } from '../ui';
 import { IconMenuHamburger } from '../ui/icons/normal';
-import { DropdownMenu2 } from './ui-radix-menu';
+import { DropdownMenu } from './ui-radix-menu';
 
 function FontInputTitle() {
     return (
-        <div className="">
-            <div className="">
+        <div className="py-1 flex items-center justify-between">
+            <div className="self-end">
                 WOFF2 font data
             </div>
             <div className="">
-                <Button className="px-2 py-1">
-                    <IconMenuHamburger className="w-4 h-4" />
-                    Clear
-                </Button>
-                <DropdownMenu2 />
+                <DropdownMenu
+                    trigger={
+                        <Button className="p-2">
+                            <IconMenuHamburger className="w-4 h-4" />
+                        </Button>
+                    }
+                />
             </div>
         </div>
 
