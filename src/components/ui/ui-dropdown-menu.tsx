@@ -4,22 +4,22 @@ import { classNames } from "@/utils";
 import { MenuContentProps } from "@radix-ui/react-dropdown-menu";
 
 export interface MenuItemType {
-    id: string;
-    icon?: ReactNode;
-    label: string;
-    shortcut?: string;
+    readonly id: string;
+    readonly icon?: ReactNode;
+    readonly label: string;
+    readonly shortcut?: string;
 }
 
 interface DropdownMenuProps {
     trigger: ReactNode;
     onCommand: (id: string) => void;
-    items: MenuItemType[];
+    items: readonly MenuItemType[];
     containerClasses: string;
     menuContentProps?: MenuContentProps;
 }
 
 const contentClasses = " \
-px-1.5 py-1 \
+p-1 \
 bg-white dark:bg-gray-800 \
 radix-side-top:animate-slide-up \
 radix-side-bottom:animate-slide-down \
