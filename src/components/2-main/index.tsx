@@ -2,11 +2,24 @@ import { fontData, convertToSvg, fontDataSource } from '@/store';
 import { ShowGlyphs } from './view-glyphs';
 import { Button, InputArea } from '../ui';
 import { IconMenuHamburger } from '../ui/icons/normal';
-import { DropdownMenu } from './ui-radix-menu';
+import { DropdownMenu, MenuItemType } from './ui-radix-menu';
+
+const generalMenuItems: MenuItemType[] = [
+    {
+        id: "new-file",
+        label: "New File",
+        // shortcut: "⌘+N",
+    },
+    {
+        id: "open-settings",
+        label: "Settings",
+        // shortcut: "⌘+,",
+    },
+];
 
 function FontInputTitle() {
     return (
-        <div className="py-1 flex items-center justify-between">
+        <div className="py-1 select-none flex items-center justify-between">
             <div className="self-end">
                 WOFF2 font data
             </div>
@@ -17,6 +30,7 @@ function FontInputTitle() {
                             <IconMenuHamburger className="w-4 h-4" />
                         </Button>
                     }
+                    items={generalMenuItems}
                     onCommand={(id) => { console.log(id); }}
                 />
             </div>
