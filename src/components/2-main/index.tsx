@@ -4,26 +4,22 @@ import { Button, InputArea } from '../ui';
 import { IconMenuHamburger } from '../ui/icons/normal';
 import { DropdownMenu, MenuItemType } from '../ui/ui-dropdown-menu';
 
-const generalMenuItems = [
+const generalMenuItems: readonly MenuItemType[] = [
     {
         id: "new-file",
         label: "New File",
-        // shortcut: "⌘+N",
-    },
-    {
+    }, {
         id: "open-settings",
         label: "Settings",
-        // shortcut: "⌘+,",
     },
 ] as const;
-
-type T = typeof generalMenuItems;
 
 const containerClasses = "w-20";
 
 function FontInputTitle() {
     function onCommand(id: string) {
-        switch (id as T[number]['id']) {
+        type TKeys = (typeof generalMenuItems)[number]['id'];
+        switch (id as TKeys) {
             case "new-file":
                 break;
             case "open-settings":
@@ -45,7 +41,7 @@ function FontInputTitle() {
                     }
                     items={generalMenuItems}
                     containerClasses={containerClasses}
-                    menuContentProps={{sideOffset: 1}}
+                    menuContentProps={{ sideOffset: 1 }}
                     onCommand={onCommand}
                 />
             </div>
