@@ -17,6 +17,8 @@ const generalMenuItems: MenuItemType[] = [
     },
 ];
 
+const containerClasses = "px-1.5 py-1 w-20";
+
 function FontInputTitle() {
     return (
         <div className="py-1 select-none flex items-center justify-between">
@@ -25,6 +27,7 @@ function FontInputTitle() {
             </div>
             <div className="">
                 <DropdownMenu
+                    containerClasses={containerClasses}
                     trigger={
                         <Button className="p-2">
                             <IconMenuHamburger className="w-4 h-4" />
