@@ -2,6 +2,7 @@ import { fontData, convertToSvg, fontDataSource } from '@/store';
 import { ShowGlyphs } from './view-glyphs';
 import { Button, InputArea } from '../ui';
 import { IconMenuHamburger } from '../ui/icons/normal';
+import { DropdownMenu2 } from './menu';
 
 function FontInputTitle() {
     return (
@@ -14,6 +15,7 @@ function FontInputTitle() {
                     <IconMenuHamburger className="w-4 h-4" />
                     Clear
                 </Button>
+                <DropdownMenu2 />
             </div>
         </div>
 
