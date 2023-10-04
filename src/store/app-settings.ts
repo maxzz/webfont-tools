@@ -9,9 +9,9 @@ const defaultSettings: AppSettings = {
     theme: 'light',
 };
 
-export const appSettings = proxy<AppSettings>(initSettings());
-
 const STORE_KEY = "webfont-tools-app-settings";
+
+export const appSettings = proxy<AppSettings>(initSettings());
 
 function initSettings(): AppSettings {
     const savedSettings = localStorage.getItem(STORE_KEY);
