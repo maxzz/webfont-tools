@@ -23,9 +23,13 @@ function ConvertForm() {
 
             <ShowGlyphs />
 
-            <ButtonRegular className="self-end px-4 py-2" onClick={() => convertToSvg()}>
+            {/* <ButtonRegular className="self-end px-4 py-2" onClick={() => convertToSvg()}>
                 Convert
             </ButtonRegular>
+ */}
+            <Button className="self-end" variant={'outline'} onClick={() => convertToSvg()}>
+                Convert
+            </Button>
 
             <Button variant={'outline'}>OK</Button>
 
