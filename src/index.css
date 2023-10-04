@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+/* html {
     @apply bg-gray-300 text-primary-950;
+} */
+
+@layer components {
+    /* .btn {
+        @apply bg-primary-950 text-white;
+    } */
+
+    html {
+        @apply bg-red-300 text-gray-950;
+    }
 }
