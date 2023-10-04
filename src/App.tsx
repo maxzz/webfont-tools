@@ -2,7 +2,7 @@ import { Header } from "./components/1-header";
 import { Main } from "./components/2-main";
 import { Footer } from "./components/3-footer";
 import { DropArea, UIToaster } from "./components/ui";
-import { ThemeProvider } from "./components/ui/shadcn/theme-provider";
+import { ThemeProvider } from "./components/ui/shadcn";
 
 export function App() {
     return (<>

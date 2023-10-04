@@ -2,7 +2,7 @@ import { fontData, convertToSvg, fontDataSource } from '@/store';
 import { ShowGlyphs } from './view-glyphs';
 import { Button as ButtonRegular, InputArea } from '../ui';
 import { FontInputTitleBar } from './top-title-menu';
-import { Button } from '../ui/shadcn';
+import { Button, ModeToggle } from '../ui/shadcn';
 
 function FontInput() {
     return (
@@ -34,6 +34,7 @@ function ConvertForm() {
 export function Main() {
     return (
         <div className="p-4">
+            <ModeToggle />
             <ConvertForm />
         </div>
     );
