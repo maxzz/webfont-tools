@@ -1,5 +1,6 @@
 const colors = require("tailwindcss/colors");
 const shadcnColors = require("./tailwind/colors");
+const shadcnTheRest = require("./tailwind/the-rest");
 console.log('shadcnColors', shadcnColors);
 
 const qq = {
@@ -19,10 +20,13 @@ export default {
                 secondary: colors.green,
                 ...shadcnColors.colors,
             },
+            ...shadcnTheRest,
             gridTemplateColumns: {
                 'fluid': 'repeat(auto-fit, minmax(6rem, 1fr))',
             },
         },
     },
-    plugins: [],
+    plugins: [
+        require("tailwindcss-animate"),
+    ],
 };
