@@ -1,7 +1,8 @@
 import { fontData, convertToSvg, fontDataSource } from '@/store';
 import { ShowGlyphs } from './view-glyphs';
-import { Button, InputArea } from '../ui';
+import { Button as ButtonRegular, InputArea } from '../ui';
 import { FontInputTitleBar } from './top-title-menu';
+import { Button } from '../ui/shadcn';
 
 function FontInput() {
     return (
@@ -21,9 +22,11 @@ function ConvertForm() {
 
             <ShowGlyphs />
 
-            <Button className="self-end px-4 py-2" onClick={() => convertToSvg()}>
+            <ButtonRegular className="self-end px-4 py-2" onClick={() => convertToSvg()}>
                 Convert
-            </Button>
+            </ButtonRegular>
+
+            <Button variant={'outline'}>OK</Button>
         </div>
     );
 }
