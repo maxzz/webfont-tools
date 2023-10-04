@@ -66,16 +66,12 @@
     }
 }
 
-@layer components {
-    /* .btn {
-        @apply bg-primary-950 text-white;
-    } */
-
+/* @layer components {
     html {
         @apply dark:bg-primary text-gray-950;
     }
-}
-
-/* html {
-    @apply bg-gray-300 text-primary-950;
 } */
+
+html {
+    @apply bg-gray-300 text-primary;
+}
