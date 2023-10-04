@@ -66,12 +66,6 @@
     }
 }
 
-/* @layer components {
-    html {
-        @apply dark:bg-primary text-gray-950;
-    }
-} */
-
 html {
-    @apply bg-gray-300 text-primary;
+    @apply bg-primary text-primary-foreground;
 }
