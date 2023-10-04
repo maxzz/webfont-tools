@@ -1,8 +1,8 @@
 import { fontData, convertToSvg, fontDataSource } from '@/store';
 import { ShowGlyphs } from './view-glyphs';
-import { Button as ButtonRegular, InputArea } from '../ui';
+import { InputArea } from '../ui';
 import { FontInputTitleBar } from './top-title-menu';
-import { Button, ModeToggle } from '../ui/shadcn';
+import { Button } from '../ui/shadcn';
 import { DialogDemo } from './font-svg-view';
 
 function FontInput() {
@@ -23,10 +23,6 @@ function ConvertForm() {
 
             <ShowGlyphs />
 
-            {/* <ButtonRegular className="self-end px-4 py-2" onClick={() => convertToSvg()}>
-                Convert
-            </ButtonRegular>
- */}
             <Button className="self-end" variant={'outline'} onClick={() => convertToSvg()}>
                 Convert
             </Button>
@@ -41,7 +37,6 @@ function ConvertForm() {
 export function Main() {
     return (
         <div className="p-4">
-            <ModeToggle />
             <ConvertForm />
         </div>
     );

@@ -1,7 +1,9 @@
+import { ModeToggle } from "../ui/shadcn";
+
 export function Header() {
     return (
-        <div className="py-4 bg-primary-500/20">
-            
+        <div className="p-4 bg-primary-foreground flex items-center justify-end">
+            <ModeToggle />
         </div>
     );
 }
