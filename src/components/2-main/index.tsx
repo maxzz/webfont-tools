@@ -3,6 +3,7 @@ import { ShowGlyphs } from './view-glyphs';
 import { Button as ButtonRegular, InputArea } from '../ui';
 import { FontInputTitleBar } from './top-title-menu';
 import { Button, ModeToggle } from '../ui/shadcn';
+import { DialogDemo } from './font-svg-view';
 
 function FontInput() {
     return (
@@ -27,6 +28,8 @@ function ConvertForm() {
             </ButtonRegular>
 
             <Button variant={'outline'}>OK</Button>
+
+            <DialogDemo />
         </div>
     );
 }
