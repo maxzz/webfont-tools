@@ -1,6 +1,6 @@
 import { HTMLAttributes, ReactNode, forwardRef } from 'react';
 import { classNames } from '@/utils';
-import { inputFocusClasses } from '../ui/shared-styles';
+import { inputFocusClasses } from '../shared-styles';
 
 export const Button = forwardRef<HTMLButtonElement, HTMLAttributes<HTMLButtonElement>>(
     ({ children, className, ...rest }, ref) => {

@@ -1,5 +1,5 @@
 import { useTheme } from "./theme-provider";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "./dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "../shadcn/dropdown-menu";
 import { Button } from "@/components/ui/shadcn";
 import { Moon, Sun } from "lucide-react";
 

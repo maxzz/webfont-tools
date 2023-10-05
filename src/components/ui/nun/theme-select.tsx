@@ -1,4 +1,4 @@
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "./select";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "../shadcn/select";
 
 export function ThemeSelect() {
     return (

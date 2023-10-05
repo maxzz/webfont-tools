@@ -9,11 +9,14 @@ import { Theme } from "@/utils/theme-apply";
 function Item({ label, theme, current }: { label: string; theme: Theme; current: Theme; }) {
     return (
         <DropdownMenuItem
-            className="flex items-center justify-between"
+            className="grid grid-cols-[16px,1fr] items-center gap-x-2"
             onClick={() => appSettings.theme = theme}
         >
-            <div className="">{label}</div>
-            {current === theme && <CheckIcon className="w-4 h-4 ml-2" />}
+            {current === theme && <CheckIcon className="w-4 h-4" />}
+
+            <div className="col-start-2">
+                {label}
+            </div>
         </DropdownMenuItem>
     );
 }
@@ -51,9 +54,9 @@ export function ThemeSwitch() {
                 </DropdownMenuTrigger>
 
                 <DropdownMenuContent align="end">
-                    <Item label="Light" current={theme} theme="light" />
-                    <Item label="Dark" current={theme} theme="dark" />
-                    <Item label="System" current={theme} theme="system" />
+                    <Item label="Light" theme="light" current={theme} />
+                    <Item label="Dark" theme="dark" current={theme} />
+                    <Item label="System" theme="system" current={theme} />
                 </DropdownMenuContent>
 
             </DropdownMenu>

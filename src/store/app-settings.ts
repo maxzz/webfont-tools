@@ -24,6 +24,9 @@ function initSettings(): AppSettings {
     return defaultSettings;
 }
 
+themeApply(appSettings.theme);
+console.log('appSettings', appSettings);
+
 subscribe(appSettings, () => {
     themeApply(appSettings.theme);
     localStorage.setItem(STORE_KEY, JSON.stringify(appSettings));
