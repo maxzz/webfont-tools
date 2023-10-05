@@ -1,14 +1,6 @@
 const colors = require("tailwindcss/colors");
 const shadcnColors = require("./tailwind/colors");
 const shadcnTheRest = require("./tailwind/the-rest");
-console.log('shadcnColors', shadcnColors);
-
-const qq = {
-    primary: colors.zinc,
-    secondary: colors.green,
-    ...shadcnColors.colors,
-}
-console.log('qq', qq);
 
 /** @type {import('tailwindcss').Config} */
 export default {
