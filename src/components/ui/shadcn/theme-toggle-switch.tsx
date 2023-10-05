@@ -38,7 +38,7 @@ export function ThemeSwitch() {
             >
                 {isSystem && <IconSystem className={"w-4 h-4"} />}
                 {isLight && <IconLight className={"w-4 h-4"} />}
-                {isDark && <IconDark className={"w-3 h-3"} />}
+                {isDark && <IconDark className={"w-4 h-4 p-0.5"} />}
             </Button>
 
             <DropdownMenu>
