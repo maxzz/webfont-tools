@@ -7,7 +7,7 @@ export function Header() {
             <div className="flex items-center gap-x-1">
                 <IconAppLogo className="ml-2 w-7 h-7 stroke-none fill-slate-600 -rotate-90" />
 
-                <div className="pb-1.5 text-3xl text-slate-600 uppercase ">
+                <div className="pb-1.5 text-3xl font-extralight tracking-tighter text-slate-600 uppercase ">
                     Web Font Tools
                 </div>
             </div>

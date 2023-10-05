@@ -1,4 +1,4 @@
-import { Button } from '../ui';
+import { Button } from '../ui/shadcn';
 import { IconMenuHamburger } from '../ui/icons/normal';
 import { DropdownMenu, MenuItemType } from '../ui/ui-dropdown-menu';
 
@@ -33,7 +33,7 @@ export function FontInputTitleBar() {
             <div className="">
                 <DropdownMenu
                     trigger={
-                        <Button className="p-2">
+                        <Button variant={'outline'} size={'sm'} className="px-2" >
                             <IconMenuHamburger className="w-4 h-4" />
                         </Button>
                     }

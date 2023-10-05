@@ -20,18 +20,16 @@ interface DropdownMenuProps {
 
 const contentClasses = " \
 p-1 \
-bg-white dark:bg-gray-800 \
+bg-background \
 radix-side-top:animate-slide-up \
 radix-side-bottom:animate-slide-down \
-rounded-lg shadow-md \
+rounded-md shadow-md \
 ";
 
 const itemClasses = " \
 px-2 py-2 text-xs  \
-text-gray-950 dark:text-gray-500 \
-focus:bg-gray-50 dark:focus:bg-gray-900 \
-data-[highlighted]:bg-gray-300 \
-dark:data-[highlighted]:bg-gray-950 \
+focus:bg-accent \
+focus:text-accent-foreground \
 outline-none rounded-md select-none cursor-default flex items-center \
 ";
 
