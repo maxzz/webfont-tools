@@ -25,7 +25,6 @@ function initSettings(): AppSettings {
 }
 
 themeApply(appSettings.theme);
-console.log('appSettings', appSettings);
 
 subscribe(appSettings, () => {
     themeApply(appSettings.theme);

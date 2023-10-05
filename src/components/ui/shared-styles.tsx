@@ -7,4 +7,9 @@ focus:ring-1 \
 focus:ring-offset-1 \
 focus:outline-none";
 
-export const inputClasses = 'px-2 py-1 w-full bg-primary-200 border-primary-400 border rounded';
+export const inputClasses = "\
+px-2 py-1 w-full \
+bg-background \
+text-foreground \
+border-primary-400 \
+border rounded";
