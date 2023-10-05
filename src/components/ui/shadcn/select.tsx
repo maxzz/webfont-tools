@@ -29,14 +29,16 @@ flex items-center justify-between";
 const SelectTrigger = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Trigger>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...rest }, ref) => (
-    <SelectPrimitive.Trigger ref={ref} className={cn(SelectTriggerClasses, className)} {...rest}>
-        {children}
-        <SelectPrimitive.Icon asChild>
-            <CaretSortIcon className="h-4 w-4 opacity-50" />
-        </SelectPrimitive.Icon>
-    </SelectPrimitive.Trigger>
-));
+>(
+    ({ className, children, ...rest }, ref) => (
+        <SelectPrimitive.Trigger ref={ref} className={cn(SelectTriggerClasses, className)} {...rest}>
+            {children}
+            <SelectPrimitive.Icon asChild>
+                <CaretSortIcon className="h-4 w-4 opacity-50" />
+            </SelectPrimitive.Icon>
+        </SelectPrimitive.Trigger>
+    )
+);
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectContentClasses = "\
@@ -69,32 +71,36 @@ min-w-[var(--radix-select-trigger-width)]";
 const SelectContent = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Content>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(({ className, children, position = "popper", ...rest }, ref) => (
-    <SelectPrimitive.Portal>
-        <SelectPrimitive.Content
-            ref={ref}
-            className={cn(SelectContentClasses, position === "popper" && SelectContentPopperClasses, className)}
-            position={position}
-            {...rest}
-        >
-            <SelectPrimitive.Viewport className={cn("p-1", position === "popper" && SelectContentViewportPopperClasses)}>
-                {children}
-            </SelectPrimitive.Viewport>
-        </SelectPrimitive.Content>
-    </SelectPrimitive.Portal>
-));
+>(
+    ({ className, children, position = "popper", ...rest }, ref) => (
+        <SelectPrimitive.Portal>
+            <SelectPrimitive.Content
+                ref={ref}
+                className={cn(SelectContentClasses, position === "popper" && SelectContentPopperClasses, className)}
+                position={position}
+                {...rest}
+            >
+                <SelectPrimitive.Viewport className={cn("p-1", position === "popper" && SelectContentViewportPopperClasses)}>
+                    {children}
+                </SelectPrimitive.Viewport>
+            </SelectPrimitive.Content>
+        </SelectPrimitive.Portal>
+    )
+);
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
 const SelectLabel = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Label>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
->(({ className, ...props }, ref) => (
-    <SelectPrimitive.Label
-        ref={ref}
-        className={cn("px-2 py-1.5 text-sm font-semibold", className)}
-        {...props}
-    />
-));
+>(
+    ({ className, ...props }, ref) => (
+        <SelectPrimitive.Label
+            ref={ref}
+            className={cn("px-2 py-1.5 text-sm font-semibold", className)}
+            {...props}
+        />
+    )
+);
 SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
 const SelectItemClasses = "\
@@ -110,24 +116,28 @@ flex items-center";
 const SelectItem = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Item>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ className, children, ...rest }, ref) => (
-    <SelectPrimitive.Item ref={ref} className={cn(SelectItemClasses, className)} {...rest} >
-        <span className="absolute right-2 h-3.5 w-3.5 flex items-center justify-center">
-            <SelectPrimitive.ItemIndicator>
-                <CheckIcon className="h-4 w-4" />
-            </SelectPrimitive.ItemIndicator>
-        </span>
-        <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-    </SelectPrimitive.Item>
-));
+>(
+    ({ className, children, ...rest }, ref) => (
+        <SelectPrimitive.Item ref={ref} className={cn(SelectItemClasses, className)} {...rest} >
+            <span className="absolute right-2 h-3.5 w-3.5 flex items-center justify-center">
+                <SelectPrimitive.ItemIndicator>
+                    <CheckIcon className="h-4 w-4" />
+                </SelectPrimitive.ItemIndicator>
+            </span>
+            <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+        </SelectPrimitive.Item>
+    )
+);
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
 const SelectSeparator = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Separator>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
->(({ className, ...rest }, ref) => (
-    <SelectPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-muted", className)} {...rest} />
-));
+>(
+    ({ className, ...rest }, ref) => (
+        <SelectPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-muted", className)} {...rest} />
+    )
+);
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
 export {

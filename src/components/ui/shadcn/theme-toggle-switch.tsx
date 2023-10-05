@@ -1,10 +1,10 @@
-import { appSettings } from "@/store/app-settings";
 import { useSnapshot } from "valtio";
+import { appSettings } from "@/store/app-settings";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "./dropdown-menu";
 import { Button } from "./button";
-import { ChevronDown, CheckIcon } from 'lucide-react';
 import { IconDark, IconLight, IconSystem } from "../icons/normal";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from ".";
-import { Theme } from "@/utils/theme-apply";
+import { ChevronDown, CheckIcon } from 'lucide-react';
+import { Theme } from "@/utils";
 
 function Item({ label, theme, current }: { label: string; theme: Theme; current: Theme; }) {
     return (
@@ -23,7 +23,6 @@ function Item({ label, theme, current }: { label: string; theme: Theme; current:
 
 export function ThemeSwitch() {
     const { theme } = useSnapshot(appSettings);
-
     const isDark = theme === "dark";
     const isSystem = theme === "system";
     const isLight = !isDark && !isSystem;
