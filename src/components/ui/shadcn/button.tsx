@@ -6,12 +6,15 @@ import { cn } from "@/utils";
 const defaultVariantClasses = "\
 text-sm \
 font-medium \
-transition-colors \
+\
 focus-visible:outline-none \
 focus-visible:ring-1 \
 focus-visible:ring-ring \
+\
 disabled:opacity-50 \
 disabled:pointer-events-none \
+\
+transition-colors \
 rounded-md \
 inline-flex items-center justify-center";
 
