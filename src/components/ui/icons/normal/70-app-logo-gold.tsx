@@ -1,6 +1,6 @@
 import { HTMLAttributes, SVGAttributes } from 'react';
 
-export function IconAppLogo({ title, ...rest }: SVGAttributes<SVGSVGElement> & HTMLAttributes<SVGSVGElement>) {
+export function IconAppLogo0({ title, ...rest }: SVGAttributes<SVGSVGElement> & HTMLAttributes<SVGSVGElement>) {
     return (
         <svg viewBox="0 0 447 447" strokeLinecap="round" fill="none" stroke="currentColor" strokeWidth={1.2} {...rest}>
             {title && <title>{title}</title>}
