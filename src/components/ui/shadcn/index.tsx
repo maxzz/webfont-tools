@@ -8,6 +8,7 @@ export * from './select';
 export * from './menubar';
 export * from './dialog';
 export * from './popover';
+export * from './accordion';
 export * from '../nun/theme-provider';
 export * from '../nun/theme-toggle-menu';
 export * from './theme-toggle-switch';
