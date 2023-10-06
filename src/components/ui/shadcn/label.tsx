@@ -1,5 +1,4 @@
-"use client";
-
+//"use client"; // rollup does not like this
 import * as React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { cva, type VariantProps } from "class-variance-authority";

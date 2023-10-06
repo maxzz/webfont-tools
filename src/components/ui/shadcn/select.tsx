@@ -1,5 +1,4 @@
-"use client";
-
+//"use client"; // rollup does not like this
 import * as React from "react";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import * as SelectPrimitive from "@radix-ui/react-select";
