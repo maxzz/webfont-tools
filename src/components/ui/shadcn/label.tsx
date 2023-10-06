@@ -1,6 +1,6 @@
 //"use client"; // rollup does not like this
-import * as React from "react";
-import * as LabelPrimitive from "@radix-ui/react-label";
+import { forwardRef, ElementRef, ComponentPropsWithoutRef } from "react";
+import * as Prim from "@radix-ui/react-label";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils";
 
@@ -13,14 +13,11 @@ peer-disabled:opacity-70";
 
 const labelVariants = cva(labelVariantsClasses);
 
-const Label = React.forwardRef<
-    React.ElementRef<typeof LabelPrimitive.Root>,
-    React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & VariantProps<typeof labelVariants>
->(
+const Label = forwardRef<ElementRef<typeof Prim.Root>, ComponentPropsWithoutRef<typeof Prim.Root> & VariantProps<typeof labelVariants>>(
     ({ className, ...rest }, ref) => (
-        <LabelPrimitive.Root ref={ref} className={cn(labelVariants(), className)} {...rest} />
+        <Prim.Root ref={ref} className={cn(labelVariants(), className)} {...rest} />
     )
 );
-Label.displayName = LabelPrimitive.Root.displayName;
+Label.displayName = Prim.Root.displayName;
 
 export { Label };

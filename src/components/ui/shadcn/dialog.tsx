@@ -1,12 +1,12 @@
 //"use client"; // rollup does not like this
-import * as React from "react";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { ComponentPropsWithoutRef, ElementRef, HTMLAttributes, forwardRef } from "react";
+import * as Prim from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { cn } from "@/utils";
 
-const Dialog = DialogPrimitive.Root;
-const DialogTrigger = DialogPrimitive.Trigger;
-const DialogPortal = DialogPrimitive.Portal;
+const Dialog = Prim.Root;
+const DialogTrigger = Prim.Trigger;
+const DialogPortal = Prim.Portal;
 
 const DialogOverlayClasses = "\
 fixed inset-0 z-50 \
@@ -18,15 +18,12 @@ data-[state=open]:animate-in \
 data-[state=closed]:animate-out \
 data-[state=closed]:fade-out-0 \
 data-[state=open]:fade-in-0";
-const DialogOverlay = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Overlay>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->(
+const DialogOverlay = forwardRef<ElementRef<typeof Prim.Overlay>, ComponentPropsWithoutRef<typeof Prim.Overlay>>(
     ({ className, ...rest }, ref) => (
-        <DialogPrimitive.Overlay ref={ref} className={cn(DialogOverlayClasses, className)} {...rest} />
+        <Prim.Overlay ref={ref} className={cn(DialogOverlayClasses, className)} {...rest} />
     )
 );
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+DialogOverlay.displayName = Prim.Overlay.displayName;
 
 const DialogContentClasses = "\
 fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-50 \
@@ -66,57 +63,48 @@ ring-offset-background \
 \
 rounded-sm \
 disabled:pointer-events-none";
-const DialogContent = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Content>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(
+const DialogContent = forwardRef<ElementRef<typeof Prim.Content>, ComponentPropsWithoutRef<typeof Prim.Content>>(
     ({ className, children, ...rest }, ref) => (
         <DialogPortal>
             <DialogOverlay />
 
-            <DialogPrimitive.Content ref={ref} className={cn(DialogContentClasses, className)} {...rest}>
+            <Prim.Content ref={ref} className={cn(DialogContentClasses, className)} {...rest}>
                 {children}
 
-                <DialogPrimitive.Close className={DialogContentCloseClasses}>
+                <Prim.Close className={DialogContentCloseClasses}>
                     <Cross2Icon className="h-4 w-4" />
                     <span className="sr-only">Close</span>
-                </DialogPrimitive.Close>
+                </Prim.Close>
 
-            </DialogPrimitive.Content>
+            </Prim.Content>
         </DialogPortal>
     )
 );
-DialogContent.displayName = DialogPrimitive.Content.displayName;
+DialogContent.displayName = Prim.Content.displayName;
 
-const DialogHeader = ({ className, ...rest }: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogHeader = ({ className, ...rest }: HTMLAttributes<HTMLDivElement>) => (
     <div className={cn("text-center sm:text-left flex flex-col space-y-1.5", className)} {...rest} />
 );
 DialogHeader.displayName = "DialogHeader";
 
-const DialogFooter = ({ className, ...rest }: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogFooter = ({ className, ...rest }: HTMLAttributes<HTMLDivElement>) => (
     <div className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)} {...rest} />
 );
 DialogFooter.displayName = "DialogFooter";
 
-const DialogTitle = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Title>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
->(
+const DialogTitle = forwardRef<ElementRef<typeof Prim.Title>, ComponentPropsWithoutRef<typeof Prim.Title>>(
     ({ className, ...rest }, ref) => (
-        <DialogPrimitive.Title ref={ref} className={cn("text-lg font-semibold leading-none tracking-tight", className)} {...rest} />
+        <Prim.Title ref={ref} className={cn("text-lg font-semibold leading-none tracking-tight", className)} {...rest} />
     )
 );
-DialogTitle.displayName = DialogPrimitive.Title.displayName;
+DialogTitle.displayName = Prim.Title.displayName;
 
-const DialogDescription = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Description>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(
+const DialogDescription = forwardRef<ElementRef<typeof Prim.Description>, ComponentPropsWithoutRef<typeof Prim.Description>>(
     ({ className, ...rest }, ref) => (
-        <DialogPrimitive.Description ref={ref} className={cn("text-sm text-muted-foreground", className)} {...rest} />
+        <Prim.Description ref={ref} className={cn("text-sm text-muted-foreground", className)} {...rest} />
     )
 );
-DialogDescription.displayName = DialogPrimitive.Description.displayName;
+DialogDescription.displayName = Prim.Description.displayName;
 
 export {
     Dialog,

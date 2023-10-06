@@ -1,12 +1,12 @@
 //"use client"; // rollup does not like this
-import * as React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import * as Prim from "@radix-ui/react-select";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-import * as SelectPrimitive from "@radix-ui/react-select";
 import { cn } from "@/utils";
 
-const Select = SelectPrimitive.Root;
-const SelectGroup = SelectPrimitive.Group;
-const SelectValue = SelectPrimitive.Value;
+const Select = Prim.Root;
+const SelectGroup = Prim.Group;
+const SelectValue = Prim.Value;
 
 const SelectTriggerClasses = "\
 px-3 py-2 h-9 w-full text-sm \
@@ -25,20 +25,17 @@ disabled:opacity-50 \
 \
 border rounded-md shadow-sm \
 flex items-center justify-between";
-const SelectTrigger = React.forwardRef<
-    React.ElementRef<typeof SelectPrimitive.Trigger>,
-    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(
+const SelectTrigger = forwardRef<ElementRef<typeof Prim.Trigger>, ComponentPropsWithoutRef<typeof Prim.Trigger>>(
     ({ className, children, ...rest }, ref) => (
-        <SelectPrimitive.Trigger ref={ref} className={cn(SelectTriggerClasses, className)} {...rest}>
+        <Prim.Trigger ref={ref} className={cn(SelectTriggerClasses, className)} {...rest}>
             {children}
-            <SelectPrimitive.Icon asChild>
+            <Prim.Icon asChild>
                 <CaretSortIcon className="h-4 w-4 opacity-50" />
-            </SelectPrimitive.Icon>
-        </SelectPrimitive.Trigger>
+            </Prim.Icon>
+        </Prim.Trigger>
     )
 );
-SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
+SelectTrigger.displayName = Prim.Trigger.displayName;
 
 const SelectContentClasses = "\
 z-50 relative min-w-[8rem] \
@@ -67,40 +64,34 @@ const SelectContentViewportPopperClasses = "\
 w-full \
 h-[var(--radix-select-trigger-height)] \
 min-w-[var(--radix-select-trigger-width)]";
-const SelectContent = React.forwardRef<
-    React.ElementRef<typeof SelectPrimitive.Content>,
-    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(
+const SelectContent = forwardRef<React.ElementRef<typeof Prim.Content>, React.ComponentPropsWithoutRef<typeof Prim.Content>>(
     ({ className, children, position = "popper", ...rest }, ref) => (
-        <SelectPrimitive.Portal>
-            <SelectPrimitive.Content
+        <Prim.Portal>
+            <Prim.Content
                 ref={ref}
                 className={cn(SelectContentClasses, position === "popper" && SelectContentPopperClasses, className)}
                 position={position}
                 {...rest}
             >
-                <SelectPrimitive.Viewport className={cn("p-1", position === "popper" && SelectContentViewportPopperClasses)}>
+                <Prim.Viewport className={cn("p-1", position === "popper" && SelectContentViewportPopperClasses)}>
                     {children}
-                </SelectPrimitive.Viewport>
-            </SelectPrimitive.Content>
-        </SelectPrimitive.Portal>
+                </Prim.Viewport>
+            </Prim.Content>
+        </Prim.Portal>
     )
 );
-SelectContent.displayName = SelectPrimitive.Content.displayName;
+SelectContent.displayName = Prim.Content.displayName;
 
-const SelectLabel = React.forwardRef<
-    React.ElementRef<typeof SelectPrimitive.Label>,
-    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
->(
+const SelectLabel = forwardRef<ElementRef<typeof Prim.Label>, ComponentPropsWithoutRef<typeof Prim.Label>>(
     ({ className, ...props }, ref) => (
-        <SelectPrimitive.Label
+        <Prim.Label
             ref={ref}
             className={cn("px-2 py-1.5 text-sm font-semibold", className)}
             {...props}
         />
     )
 );
-SelectLabel.displayName = SelectPrimitive.Label.displayName;
+SelectLabel.displayName = Prim.Label.displayName;
 
 const SelectItemClasses = "\
 relative pl-2 pr-8 py-1.5 w-full text-sm \
@@ -112,32 +103,26 @@ data-[disabled]:pointer-events-none \
 \
 rounded-sm outline-none select-none cursor-default \
 flex items-center";
-const SelectItem = React.forwardRef<
-    React.ElementRef<typeof SelectPrimitive.Item>,
-    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(
+const SelectItem = forwardRef<ElementRef<typeof Prim.Item>, ComponentPropsWithoutRef<typeof Prim.Item>>(
     ({ className, children, ...rest }, ref) => (
-        <SelectPrimitive.Item ref={ref} className={cn(SelectItemClasses, className)} {...rest} >
+        <Prim.Item ref={ref} className={cn(SelectItemClasses, className)} {...rest} >
             <span className="absolute right-2 h-3.5 w-3.5 flex items-center justify-center">
-                <SelectPrimitive.ItemIndicator>
+                <Prim.ItemIndicator>
                     <CheckIcon className="h-4 w-4" />
-                </SelectPrimitive.ItemIndicator>
+                </Prim.ItemIndicator>
             </span>
-            <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-        </SelectPrimitive.Item>
+            <Prim.ItemText>{children}</Prim.ItemText>
+        </Prim.Item>
     )
 );
-SelectItem.displayName = SelectPrimitive.Item.displayName;
+SelectItem.displayName = Prim.Item.displayName;
 
-const SelectSeparator = React.forwardRef<
-    React.ElementRef<typeof SelectPrimitive.Separator>,
-    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
->(
+const SelectSeparator = forwardRef<ElementRef<typeof Prim.Separator>, ComponentPropsWithoutRef<typeof Prim.Separator>>(
     ({ className, ...rest }, ref) => (
-        <SelectPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-muted", className)} {...rest} />
+        <Prim.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-muted", className)} {...rest} />
     )
 );
-SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
+SelectSeparator.displayName = Prim.Separator.displayName;
 
 export {
     Select,
