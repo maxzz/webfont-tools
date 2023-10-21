@@ -4,12 +4,11 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils";
 
 const defaultVariantClasses = "\
-text-sm \
-font-medium \
+text-sm font-medium \
 \
-focus-visible:outline-none \
 focus-visible:ring-1 \
 focus-visible:ring-ring \
+focus-visible:outline-none \
 \
 disabled:opacity-50 \
 disabled:pointer-events-none \
