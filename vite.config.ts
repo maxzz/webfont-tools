@@ -10,9 +10,9 @@ function manualChunks(id: string) { //https://rollupjs.org/configuration-options
     if (id.includes("fonteditor-core")) {
         return "fonteditor";
     }
-    if (id.includes("node_modules")) {
-        return "vendor";
-    }
+    // if (id.includes("node_modules")) {
+    //     return "vendor";
+    // }
 }
 
 // https://vitejs.dev/config/
