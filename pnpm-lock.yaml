@@ -102,8 +102,8 @@ dependencies:
     specifier: ^4.3.2
     version: 4.3.2
   fonteditor-core:
-    specifier: ^2.3.0
-    version: 2.3.0
+    specifier: ^2.3.1
+    version: 2.3.1
   jotai:
     specifier: ^2.5.1
     version: 2.5.1(@types/react@18.2.37)(react@18.2.0)
@@ -2474,8 +2474,8 @@ packages:
     dependencies:
       to-regex-range: 5.0.1
 
-  /fonteditor-core@2.3.0:
-    resolution: {integrity: sha512-cxk9UC6kA5tWykzkQoSmLjexFfulCD8ZWRvAQcF5X9Qyp2WEc1Sx2gdRv184zPwOrPOkBggEzJ5QYIfmhSQX3Q==}
+  /fonteditor-core@2.3.1:
+    resolution: {integrity: sha512-I0s+7Y6Dawpt6LCP/i1eC4ZexYmLaFAMm8CBMkEU/5mDTj15jLqSJ3GfM1rKCow2hc+JgPdaiiWarHlq8+ZVuQ==}
     dependencies:
       '@xmldom/xmldom': 0.8.10
     dev: false
