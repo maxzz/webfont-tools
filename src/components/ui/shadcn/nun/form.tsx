@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef, ElementRef, HTMLAttributes, createContext, fo
 import { Controller, ControllerProps, FieldPath, FieldValues, FormProvider, useFormContext, } from "react-hook-form";
 import { Slot } from "@radix-ui/react-slot";
 import * as LabelPrim from "@radix-ui/react-label";
-import { Label } from "./label";
+import { Label } from "../label";
 import { cn } from "@/utils";
 
 const Form = FormProvider;

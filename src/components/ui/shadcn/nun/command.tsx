@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, HTMLAttributes, forwardRef } from "react";
 import { DialogProps } from "@radix-ui/react-dialog";
-import { Dialog, DialogContent } from "./dialog";
+import { Dialog, DialogContent } from "../dialog";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Command as CommandPrimitive } from "cmdk";
 import { cn } from "@/utils";

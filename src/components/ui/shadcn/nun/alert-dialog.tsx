@@ -1,6 +1,6 @@
 import { forwardRef, ElementRef, ComponentPropsWithoutRef, HTMLAttributes } from "react";
 import * as Prim from "@radix-ui/react-alert-dialog";
-import { buttonVariants } from "./button";
+import { buttonVariants } from "../button";
 import { cn } from "@/utils";
 
 const AlertDialog = Prim.Root;
