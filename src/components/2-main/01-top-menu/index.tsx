@@ -8,7 +8,7 @@ export function FontInputTitleBar() {
                 WOFF2 font data
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1">
                 <ButtonConvert />
                 <ButtonCopy />
                 <TitleBarMenu />

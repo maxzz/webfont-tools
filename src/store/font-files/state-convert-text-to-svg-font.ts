@@ -1,19 +1,9 @@
 import { fontData } from "../state-font-data";
-import { base64ToSvgFont, xml2Js } from ".";
 import { toastWarning } from "@/components/ui";
+import { formatXml, xml2Js } from "./xml-parse";
+import { fontBase64ToSvgFont } from "./create-font-from-buffer";
 
-function formatXml(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
-    var formatted = '', indent= '';
-    tab = tab || '\t';
-    xml.split(/>\s*</).forEach(function(node) {
-        if (node.match( /^\/\w/ )) indent = indent.substring(tab.length); // decrease indent by one 'tab'
-        formatted += indent + '<' + node + '>\r\n';
-        if (node.match( /^<?\w[^>]*[^\/]$/ )) indent += tab;              // increase indent
-    });
-    return formatted.substring(1, formatted.length-3);
-}
-
-export async function convertToSvg() {
+export async function convertTextToSvgFont() {
     try {
         let fontText = fontData.dataUri ? fontData.dataUri.data : fontData.fontText;
         if (!fontText) {
@@ -23,7 +13,7 @@ export async function convertToSvg() {
 
         // 1. set xml
     
-        const xml = await base64ToSvgFont(fontText);
+        const xml = await fontBase64ToSvgFont(fontText);
         fontData.xmlText = formatXml(xml);
 
         // 2. set glyphs

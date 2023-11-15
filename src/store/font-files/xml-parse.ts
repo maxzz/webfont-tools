@@ -13,3 +13,28 @@ export function xml2Js(cnt: string) {
     const obj = parser.parse(cnt); //console.log('%craw', 'color: green', JSON.stringify(obj, null, 4));
     return obj as XmlSvgFile;
 }
+
+// XML beautifier similar to https://gist.github.com/sente/1083506
+
+export function formatXml(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
+    tab = tab || '\t';
+
+    let formatted = '';
+    let indent = '';
+
+    xml.split(/>\s*</).forEach(
+        (node) => {
+            if (node.match(/^\/\w/)) {
+                indent = indent.substring(tab.length); // decrease indent by one 'tab'
+            }
+
+            formatted += indent + '<' + node + '>\r\n';
+
+            if (node.match(/^<?\w[^>]*[^\/]$/)) {
+                indent += tab;              // increase indent
+            }
+        }
+    );
+
+    return formatted.substring(1, formatted.length - 3);
+}
