@@ -31,7 +31,7 @@ export function DialogCopySvgFont() {
                     </DialogDescription>
                 </DialogHeader>
 
-                <InputArea className="h-64 text-xs whitespace-pre" store={fontData} name="xmlText" label="SVG font" spellCheck="false" />
+                <InputArea className="h-64 text-xs whitespace-pre smallscroll" store={fontData} name="xmlText" label="SVG font" spellCheck="false" />
 
                 <DialogFooter>
                     <Button
