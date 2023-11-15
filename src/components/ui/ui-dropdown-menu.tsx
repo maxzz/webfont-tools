@@ -9,7 +9,7 @@ export interface MenuItemType {
     readonly shortcut?: string;
 }
 
-type MenuCommands<T extends {id: any}[]> = T[number]['id'];
+export type MenuCommands<T extends {id: any}[]> = T[number]['id'];
 
 interface DropdownMenuProps<T extends MenuItemType> {
     trigger: ReactNode;

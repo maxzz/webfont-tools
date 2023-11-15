@@ -1,10 +1,10 @@
 import { fontData, convertToSvg, fontDataSource } from '@/store';
 import { GlyphsGrid } from './03-glyphs-grid';
 import { InputArea } from '../ui';
-import { FontInputTitleBar } from './01-top-menu/top-title-menu';
+import { FontInputTitleBar } from './01-top-menu';
 import { Button } from '../ui/shadcn';
-import { DialogCopySvgFont } from './04-svg-font-preview';
-import { dialogState } from './04-svg-font-preview/ui-state';
+import { DialogCopySvgFont } from './04-dialog-svg-font';
+import { dialogState } from './04-dialog-svg-font/state-ui';
 
 function FontInput() {
     return (
@@ -27,10 +27,6 @@ function ConvertForm() {
             <Button className="self-end" variant={'outline'} onClick={() => convertToSvg()}>
                 Convert
             </Button>
-
-            <Button variant={'outline'} onClick={() => { dialogState.isOpen = true; }}>OK</Button>
-
-            <DialogCopySvgFont />
         </div>
     );
 }
@@ -39,6 +35,7 @@ export function Main() {
     return (
         <div className="p-4">
             <ConvertForm />
+            <DialogCopySvgFont />
         </div>
     );
 }
