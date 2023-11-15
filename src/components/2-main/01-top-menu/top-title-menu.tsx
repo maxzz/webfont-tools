@@ -1,8 +1,8 @@
-import { Button } from '../../ui/shadcn';
-import { IconMenuHamburger } from '../../ui/icons/normal';
-import { DropdownMenu, MenuItemType } from '../../ui/ui-dropdown-menu';
+import { Button } from '@/components/ui/shadcn';
+import { IconMenuHamburger } from '@/components/ui/icons/normal';
+import { DropdownMenu, MenuItemType } from '@/components/ui/ui-dropdown-menu';
 
-const topMenuItems: readonly MenuItemType[] = [
+const topMenuItems = [
     {
         id: "new-file",
         label: "New File",
@@ -10,39 +10,37 @@ const topMenuItems: readonly MenuItemType[] = [
         id: "open-settings",
         label: "Settings",
     },
-] as const;
+] as const satisfies readonly MenuItemType[];
+
+type MenuCommands = (typeof topMenuItems)[number]['id'];
 
 const containerClasses = "w-20";
 
-export function FontInputTitleBar() {
-    function onCommand(id: string) {
-        switch (id as (typeof topMenuItems)[number]['id']) {
+export function TitleBarMenu() {
+    function onCommand(id: MenuCommands) {
+        switch (id) {
             case "new-file":
                 console.log(id);
                 break;
             case "open-settings":
                 console.log(id);
                 break;
+            default: {
+                const test: never = id;
+            }
         }
     }
     return (
-        <div className="py-1 select-none flex items-center justify-between">
-            <div className="self-end">
-                WOFF2 font data
-            </div>
-            <div className="">
-                <DropdownMenu
-                    trigger={
-                        <Button variant={'outline'} size={'sm'} className="px-2" >
-                            <IconMenuHamburger className="w-4 h-4" />
-                        </Button>
-                    }
-                    items={topMenuItems}
-                    containerClasses={containerClasses}
-                    menuContentProps={{ sideOffset: 1 }}
-                    onCommand={onCommand}
-                />
-            </div>
-        </div>
+        <DropdownMenu
+            trigger={
+                <Button variant={'outline'} size={'sm'} className="px-2" >
+                    <IconMenuHamburger className="w-4 h-4" />
+                </Button>
+            }
+            items={topMenuItems}
+            containerClasses={containerClasses}
+            menuContentProps={{ sideOffset: 1 }}
+            onCommand={onCommand}
+        />
     );
 }
