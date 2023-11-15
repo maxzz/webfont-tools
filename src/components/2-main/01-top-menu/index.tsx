@@ -1,22 +1,5 @@
-import { useSnapshot } from 'valtio';
-import { fontData } from '@/store';
-import { Button } from '@/components/ui/shadcn';
+import { ButtonConvert, ButtonCopy } from './01-controls';
 import { TitleBarMenu } from './02-menu';
-import { dialogState } from '../04-dialog-svg-font/state-ui';
-
-function ButtonCopy() {
-    const snapText = useSnapshot(fontData).xmlText;
-    return (
-        <Button
-            variant={'outline'}
-            size={'sm'}
-            onClick={() => dialogState.isOpen = true}
-            disabled={!snapText}
-        >
-            SVG
-        </Button>
-    );
-}
 
 export function FontInputTitleBar() {
     return (
@@ -26,7 +9,7 @@ export function FontInputTitleBar() {
             </div>
 
             <div className="flex items-center space-x-2">
-
+                <ButtonConvert />
                 <ButtonCopy />
                 <TitleBarMenu />
             </div>
