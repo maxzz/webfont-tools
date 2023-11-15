@@ -3,6 +3,7 @@ import { fontData } from "../state-font-data";
 import { fontBase64ToSvgFont } from "./create-font-from-buffer";
 import { formatSvgfontText, xml2Js } from "./xml-parse";
 import { toastWarning } from "@/components/ui";
+import { ref } from "valtio";
 
 /**
  * Get glyphs from xml
@@ -36,7 +37,7 @@ export async function convertTextToSvgFont() {
 
         // 1. get xml
         const { svgText, font } = await fontBase64ToSvgFont(fontText);
-        fontData.font = font;
+        fontData.font = ref(font);
         fontData.xmlText = formatSvgfontText(svgText);
 
         // 2. set glyphs

@@ -5,6 +5,7 @@ import { toastWarning } from "@/components/ui";
 import { getGlyphsFromSvgFont } from "./state-convert-to-svg-font";
 import { fontData } from "../state-font-data";
 import { formatSvgfontText } from "./xml-parse";
+import { ref } from "valtio";
 
 export type DoDroppedFilesAtom = typeof doDroppedFilesAtom;
 export const doDroppedFilesAtom = atom(
@@ -24,7 +25,7 @@ export const doDroppedFilesAtom = atom(
 
             // 1. get xml
             const { svgText, font } = await fontWoff2FileToSvgFont(blob);
-            fontData.font = font;
+            fontData.font = ref(font);
             fontData.xmlText = formatSvgfontText(svgText);
 
             // 2. set glyphs
