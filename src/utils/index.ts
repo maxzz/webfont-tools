@@ -3,5 +3,6 @@ export * from "./classnames";
 export * from "./debounce";
 export * from "./numbers";
 export * from "./base64-to-buffer";
+export * from "./utils-os";
 export * from "./load-file-as-blob";
 export * from "./theme-apply";
