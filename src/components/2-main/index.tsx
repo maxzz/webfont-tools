@@ -1,7 +1,7 @@
 import { fontData, convertToSvg, fontDataSource } from '@/store';
-import { ShowGlyphs } from './view-glyphs';
+import { GlyphsGrid } from './03-glyphs-grid';
 import { InputArea } from '../ui';
-import { FontInputTitleBar } from './top-title-menu';
+import { FontInputTitleBar } from './01-top-menu/top-title-menu';
 import { Button } from '../ui/shadcn';
 import { DialogDemo } from './font-svg-view';
 
@@ -21,15 +21,15 @@ function ConvertForm() {
 
             <InputArea className="h-64 text-xs whitespace-pre" store={fontData} name="xmlText" label="SVG font" spellCheck="false" />
 
-            <ShowGlyphs />
+            <GlyphsGrid />
 
             <Button className="self-end" variant={'outline'} onClick={() => convertToSvg()}>
                 Convert
             </Button>
 
-            <Button variant={'outline'}>OK</Button>
+            {/* <Button variant={'outline'}>OK</Button>
 
-            <DialogDemo />
+            <DialogDemo /> */}
         </div>
     );
 }

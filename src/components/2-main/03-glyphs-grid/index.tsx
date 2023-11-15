@@ -3,7 +3,7 @@ import { fontData } from '@/store';
 import { GlyphAttributes } from '@/store/types';
 import { HTMLAttributes } from 'react';
 
-function SvgCell({ glyph, ...rest }: { glyph: GlyphAttributes; } & HTMLAttributes<HTMLDivElement>) {
+function GlyphCell({ glyph, ...rest }: { glyph: GlyphAttributes; } & HTMLAttributes<HTMLDivElement>) {
     return (
         <div className="px-1 py-1 border-primary-400 border rounded flex space-x-2" {...rest}>
 
@@ -23,12 +23,12 @@ function SvgCell({ glyph, ...rest }: { glyph: GlyphAttributes; } & HTMLAttribute
     );
 }
 
-export function ShowGlyphs() {
+export function GlyphsGrid() {
     const snap = useSnapshot(fontData).glyphs;
     return (
         <div className="text-xs grid grid-cols-fluid">
             {snap.map((glyph) => (
-                <SvgCell glyph={glyph} key={`${glyph.unicode}${glyph['glyph-name']}`} />
+                <GlyphCell glyph={glyph} key={`${glyph.unicode}${glyph['glyph-name']}`} />
             ))}
         </div>
     );

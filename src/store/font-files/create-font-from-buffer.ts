@@ -30,16 +30,12 @@ export async function woff2FileToSvgFont(buffer: ArrayBuffer): Promise<string> {
 
     return newStr;
 }
-
+/**
+ * Create SVG font from base64 string
+ * @param base64 It can be with or without data uri 'data:application/font-woff2;base64,' protocol 
+ * @returns Promise with SVG font as string
+ */
 export async function base64ToSvgFont(base64: string): Promise<string> {
     const array = base64ToArrayBuffer(base64);
-
-    const font = await createFontFromBuffer(array.buffer, { srcType: 'woff2' });
-
-    console.log('font', font);
-
-    const newBuffer = font.write({ type: 'svg' });
-    const newStr = newBuffer.toString();
-
-    return newStr;
+    return woff2FileToSvgFont(array);
 }
