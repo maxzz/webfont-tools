@@ -13,3 +13,5 @@ bg-background \
 text-foreground \
 border-primary-400 \
 border rounded";
+
+export const textareaClasses = "smallscroll resizer [&::-webkit-resizer]:rounded [&::-webkit-resizer]:[backgroundSize:80%_80%]";

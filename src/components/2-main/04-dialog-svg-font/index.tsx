@@ -14,6 +14,7 @@ import { dialogState } from "./state-ui";
 import { useSnapshot } from "valtio";
 import { InputArea } from "@/components/ui";
 import { fontData } from "@/store";
+import { textareaClasses } from "@/components/ui/shared-styles";
 
 export function DialogCopySvgFont() {
     const snap = useSnapshot(dialogState);
@@ -31,7 +32,7 @@ export function DialogCopySvgFont() {
                     </DialogDescription>
                 </DialogHeader>
 
-                <InputArea className="h-64 text-xs whitespace-pre smallscroll resizer [&::-webkit-resizer]:rounded [&::-webkit-resizer]:[backgroundSize:80%_80%]" store={fontData} name="xmlText" label="SVG font" spellCheck="false" />
+                <InputArea className={`h-64 text-xs whitespace-pre ${textareaClasses}`} store={fontData} name="xmlText" label="SVG font" spellCheck="false" />
 
                 <DialogFooter>
                     <Button
