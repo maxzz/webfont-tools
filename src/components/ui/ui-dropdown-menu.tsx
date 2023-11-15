@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
-import * as dm from "@radix-ui/react-dropdown-menu";
+import * as Prim from "@radix-ui/react-dropdown-menu";
 import { classNames } from "@/utils";
-import { MenuContentProps } from "@radix-ui/react-dropdown-menu";
 
 export interface MenuItemType {
     readonly id: string;
@@ -10,12 +9,14 @@ export interface MenuItemType {
     readonly shortcut?: string;
 }
 
-interface DropdownMenuProps {
+type MenuCommands<T extends {id: any}[]> = T[number]['id'];
+
+interface DropdownMenuProps<T extends MenuItemType> {
     trigger: ReactNode;
-    onCommand: (id: string) => void;
-    items: readonly MenuItemType[];
+    onCommand: (id: MenuCommands<T[]>) => void;
+    items: readonly T[];
     containerClasses: string;
-    menuContentProps?: MenuContentProps;
+    menuContentProps?: Prim.MenuContentProps;
 }
 
 const contentClasses = " \
@@ -33,28 +34,28 @@ focus:text-accent-foreground \
 outline-none rounded-md select-none cursor-default flex items-center \
 ";
 
-export const DropdownMenu = ({ trigger, onCommand, items, containerClasses, menuContentProps }: DropdownMenuProps) => {
+export function DropdownMenu<T extends MenuItemType>({ trigger, onCommand, items, containerClasses, menuContentProps }: DropdownMenuProps<T>) {
     return (
         <div className="relative inline-block text-left">
-            <dm.Root>
-                <dm.Trigger asChild>
+            <Prim.Root>
+                <Prim.Trigger asChild>
                     {trigger}
-                </dm.Trigger>
+                </Prim.Trigger>
 
-                <dm.Portal>
-                    <dm.Content align="end" {...menuContentProps} className={classNames(contentClasses, containerClasses)}>
+                <Prim.Portal>
+                    <Prim.Content align="end" {...menuContentProps} className={classNames(contentClasses, containerClasses)}>
                         {items.map(({ id, label, icon, shortcut }, idx) => (
-                            <dm.Item key={id} className={itemClasses} onClick={() => onCommand(id)}>
+                            <Prim.Item key={id} className={itemClasses} onClick={() => onCommand(id)}>
                                 {icon}
                                 <span className="flex-grow">
                                     {label}
                                 </span>
                                 {shortcut && <span className="text-xs">{shortcut}</span>}
-                            </dm.Item>
+                            </Prim.Item>
                         ))}
-                    </dm.Content>
-                </dm.Portal>
-            </dm.Root>
+                    </Prim.Content>
+                </Prim.Portal>
+            </Prim.Root>
         </div>
     );
-};
+}
