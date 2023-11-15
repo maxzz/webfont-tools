@@ -4,13 +4,12 @@ import { InputArea } from '../ui';
 import { FontInputTitleBar } from './01-top-menu';
 import { Button } from '../ui/shadcn';
 import { DialogCopySvgFont } from './04-dialog-svg-font';
-import { dialogState } from './04-dialog-svg-font/state-ui';
 
 function FontInput() {
     return (
         <div className="">
             <FontInputTitleBar />
-            <InputArea className="h-64 text-xs" store={fontDataSource} name="text" spellCheck="false" />
+            <InputArea className="h-64 text-xs resizer [&::-webkit-resizer]:rounded [&::-webkit-resizer]:[backgroundSize:80%_80%]" store={fontDataSource} name="text" spellCheck="false" />
         </div>
     );
 }
@@ -20,7 +19,7 @@ function ConvertForm() {
         <div className="flex flex-col space-y-2">
             <FontInput />
 
-            <InputArea className="h-64 text-xs whitespace-pre" store={fontData} name="xmlText" label="SVG font" spellCheck="false" />
+            {/* <InputArea className="h-64 text-xs whitespace-pre" store={fontData} name="xmlText" label="SVG font" spellCheck="false" /> */}
 
             <GlyphsGrid />
 
