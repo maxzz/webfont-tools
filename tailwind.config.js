@@ -21,5 +21,9 @@ export default {
     },
     plugins: [
         require("tailwindcss-animate"),
+    
+        require('./tailwind/tailwnd-plugin-debug-styles'),
+        require('./tailwind/tailwind-plugin-debug-screens'),
+        require('./tailwind/tailwind-plugin-overflow-overlay'),
     ],
 };
