@@ -20,7 +20,7 @@ export const doDroppedFilesAtom = atom(
                 throw new Error(`Dropped file "${files[0].name}".\nOnly .woff2 files are supported`);
             }
 
-            const blob = await loadFileData(files[0], { asArrayBuffer: false });
+            const blob = await loadFileData(files[0], { returnArrayBuffer: false });
             
             console.log('files', files);
             console.log('blob', blob);

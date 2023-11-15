@@ -1,7 +1,11 @@
 import { Font, FontEditor, woff2 } from 'fonteditor-core';
 import { base64ToArrayBuffer } from '@/utils';
 
-export async function createFontFromBuffer(buffer: ArrayBuffer, { srcType }: { srcType: FontEditor.FontType;}): Promise<FontEditor.Font> {
+type CreateFontFromBufferOptions = {
+    srcType: FontEditor.FontType;
+};
+
+export async function createFontFromBuffer(buffer: ArrayBuffer, { srcType }: CreateFontFromBufferOptions): Promise<FontEditor.Font> {
     await woff2.init('./woff2.wasm');
     
     const font = Font.create(buffer, {  // read font data, support ArrayBuffer | Buffer | string
@@ -14,6 +18,17 @@ export async function createFontFromBuffer(buffer: ArrayBuffer, { srcType }: { s
     });
 
     return font;
+}
+
+export async function woff2FileToSvgFont(buffer: ArrayBuffer): Promise<string> {
+    const font = await createFontFromBuffer(buffer, { srcType: 'woff2' });
+
+    console.log('font', font);
+
+    const newBuffer = font.write({ type: 'svg' });
+    const newStr = newBuffer.toString();
+
+    return newStr;
 }
 
 export async function base64ToSvgFont(base64: string): Promise<string> {

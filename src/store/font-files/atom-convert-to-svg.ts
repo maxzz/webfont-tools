@@ -1,4 +1,4 @@
-import { fontData } from "../font-data";
+import { fontData } from "../state-font-data";
 import { base64ToSvgFont, xml2Js } from ".";
 import { toastWarning } from "@/components/ui";
 
@@ -15,19 +15,18 @@ function formatXml(xml: string, tab = '  ') { // tab = optional indent value, de
 
 export async function convertToSvg() {
     try {
-        let fontText = fontData.fontText;
-
-        if (fontData.dataUri) {
-            fontText = fontData.dataUri.data;
-        }
-
+        let fontText = fontData.dataUri ? fontData.dataUri.data : fontData.fontText;
         if (!fontText) {
             toastWarning('No font data');
             return;
         }
+
+        // 1. set xml
     
         const xml = await base64ToSvgFont(fontText);
         fontData.xmlText = formatXml(xml);
+
+        // 2. set glyphs
 
         const obj = xml2Js(fontData.xmlText);
 
