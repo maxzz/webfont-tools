@@ -16,10 +16,6 @@ export function xml2Js(cnt: string) {
 
 // XML beautifier similar to https://gist.github.com/sente/1083506
 
-export function removeEmptyFields(svgFontStr: string) {
-    return svgFontStr.replace(/(glyph-name="" )/g, ''); // remove empty fields
-}
-
 export function formatXml(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
     tab = tab || '\t';
 
@@ -41,4 +37,14 @@ export function formatXml(xml: string, tab = '  ') { // tab = optional indent va
     );
 
     return formatted.substring(1, formatted.length - 3);
+}
+
+// Addition beautifications
+
+function removeEmptyFields(svgFontStr: string) {
+    return svgFontStr.replace(/(glyph-name="" )/g, ''); // remove empty fields
+}
+
+export function formatSvgfontText(xml: string) {
+    return removeEmptyFields(formatXml(xml));
 }

@@ -4,7 +4,7 @@ import { fileExt, loadFileData } from "@/utils";
 import { toastWarning } from "@/components/ui";
 import { getGlyphsFromSvgFont } from "./state-convert-to-svg-font";
 import { fontData } from "../state-font-data";
-import { formatXml, removeEmptyFields } from "./xml-parse";
+import { formatSvgfontText } from "./xml-parse";
 
 export type DoDroppedFilesAtom = typeof doDroppedFilesAtom;
 export const doDroppedFilesAtom = atom(
@@ -24,7 +24,7 @@ export const doDroppedFilesAtom = atom(
 
             // 1. get xml
             const xml = await fontWoff2FileToSvgFont(blob);
-            fontData.xmlText = removeEmptyFields(formatXml(xml));
+            fontData.xmlText = formatSvgfontText(xml);
 
             // 2. set glyphs
             fontData.glyphs = getGlyphsFromSvgFont(fontData.xmlText);
