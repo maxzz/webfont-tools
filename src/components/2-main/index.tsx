@@ -3,7 +3,7 @@ import { GlyphsGrid } from './03-glyphs-grid';
 import { InputArea } from '../ui';
 import { FontInputTitleBar } from './01-top-menu/top-title-menu';
 import { Button } from '../ui/shadcn';
-import { DialogDemo } from './font-svg-view';
+import { DialogDemo } from './04-svg-font-preview/font-svg-view';
 
 function FontInput() {
     return (
@@ -27,9 +27,9 @@ function ConvertForm() {
                 Convert
             </Button>
 
-            {/* <Button variant={'outline'}>OK</Button>
+            {/* <Button variant={'outline'}>OK</Button> */}
 
-            <DialogDemo /> */}
+            <DialogDemo />
         </div>
     );
 }
