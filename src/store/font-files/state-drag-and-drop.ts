@@ -4,7 +4,7 @@ import { fileExt, loadFileData } from "@/utils";
 import { toastWarning } from "@/components/ui";
 import { getGlyphsFromSvgFont } from "./state-convert-to-svg-font";
 import { fontData } from "../state-font-data";
-import { formatXml } from "./xml-parse";
+import { formatXml, removeEmptyFields } from "./xml-parse";
 
 export type DoDroppedFilesAtom = typeof doDroppedFilesAtom;
 export const doDroppedFilesAtom = atom(
@@ -24,17 +24,15 @@ export const doDroppedFilesAtom = atom(
 
             // 1. get xml
             const xml = await fontWoff2FileToSvgFont(blob);
-            fontData.xmlText = formatXml(xml);
+            fontData.xmlText = removeEmptyFields(formatXml(xml));
 
             // 2. set glyphs
             fontData.glyphs = getGlyphsFromSvgFont(fontData.xmlText);
 
-            console.log('files', files);
-            console.log('blob', blob);
-            // const img: HTMLImageElement = await createImageFromBlob(blob);
-            // set(orgImgAtom, img);
+            console.log('fontData.xmlText', fontData.xmlText);
         } catch (error) {
-            // set(orgImgAtom, null);
+            fontData.xmlText = '';
+            fontData.glyphs = [];
             toastWarning((error as Error)?.message || 'Failed to load image');
         }
     }

@@ -16,6 +16,10 @@ export function xml2Js(cnt: string) {
 
 // XML beautifier similar to https://gist.github.com/sente/1083506
 
+export function removeEmptyFields(svgFontStr: string) {
+    return svgFontStr.replace(/(glyph-name="" )/g, ''); // remove empty fields
+}
+
 export function formatXml(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
     tab = tab || '\t';
 
@@ -28,7 +32,7 @@ export function formatXml(xml: string, tab = '  ') { // tab = optional indent va
                 indent = indent.substring(tab.length); // decrease indent by one 'tab'
             }
 
-            formatted += indent + '<' + node + '>\r\n';
+            formatted += `${indent}<${node}>\r\n`;
 
             if (node.match(/^<?\w[^>]*[^\/]$/)) {
                 indent += tab;              // increase indent

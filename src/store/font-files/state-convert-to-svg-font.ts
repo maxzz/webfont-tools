@@ -1,7 +1,7 @@
 import { GlyphAttributes } from "../types";
 import { fontData } from "../state-font-data";
 import { fontBase64ToSvgFont } from "./create-font-from-buffer";
-import { formatXml, xml2Js } from "./xml-parse";
+import { formatXml, removeEmptyFields, xml2Js } from "./xml-parse";
 import { toastWarning } from "@/components/ui";
 
 /**
@@ -36,7 +36,7 @@ export async function convertTextToSvgFont() {
 
         // 1. get xml
         const xml = await fontBase64ToSvgFont(fontText);
-        fontData.xmlText = formatXml(xml);
+        fontData.xmlText = removeEmptyFields(formatXml(xml));
 
         // 2. set glyphs
         fontData.glyphs = getGlyphsFromSvgFont(fontData.xmlText);

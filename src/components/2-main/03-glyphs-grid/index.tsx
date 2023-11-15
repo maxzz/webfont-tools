@@ -13,7 +13,7 @@ function GlyphCell({ glyph, ...rest }: { glyph: GlyphAttributes; } & HTMLAttribu
                 </div>
 
                 <div className="border-primary-400 border rounded grid place-items-center">
-                    <svg className="w-8 h-8 bg-blue-300" viewBox="0 0 1000 1000" transform="scale(1,-1)">
+                    <svg className="w-16 h-16 bg-blue-300" viewBox="0 0 1000 1000" transform="scale(1,-1)">
                         <path d={glyph.d} />
                     </svg>
                 </div>
@@ -26,7 +26,7 @@ function GlyphCell({ glyph, ...rest }: { glyph: GlyphAttributes; } & HTMLAttribu
 export function GlyphsGrid() {
     const snap = useSnapshot(fontData).glyphs;
     return (
-        <div className="text-xs grid grid-cols-fluid">
+        <div className="text-xs grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]">
             {snap.map((glyph) => (
                 <GlyphCell glyph={glyph} key={`${glyph.unicode}${glyph['glyph-name']}`} />
             ))}
