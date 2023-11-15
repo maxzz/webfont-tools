@@ -23,8 +23,9 @@ export const doDroppedFilesAtom = atom(
             const blob = await loadFileData(files[0], { returnArrayBuffer: true }) as ArrayBuffer;
 
             // 1. get xml
-            const xml = await fontWoff2FileToSvgFont(blob);
-            fontData.xmlText = formatSvgfontText(xml);
+            const { svgText, font } = await fontWoff2FileToSvgFont(blob);
+            fontData.font = font;
+            fontData.xmlText = formatSvgfontText(svgText);
 
             // 2. set glyphs
             fontData.glyphs = getGlyphsFromSvgFont(fontData.xmlText);

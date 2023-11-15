@@ -28,7 +28,7 @@ export function formatXml(xml: string, tab = '  ') { // tab = optional indent va
                 indent = indent.substring(tab.length); // decrease indent by one 'tab'
             }
 
-            formatted += `${indent}<${node}>\r\n`;
+            formatted += `${indent}<${node}>\r\n`; //TODO: array.join('\r\n') will be more efficient here
 
             if (node.match(/^<?\w[^>]*[^\/]$/)) {
                 indent += tab;              // increase indent

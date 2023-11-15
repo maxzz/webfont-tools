@@ -35,8 +35,9 @@ export async function convertTextToSvgFont() {
         }
 
         // 1. get xml
-        const xml = await fontBase64ToSvgFont(fontText);
-        fontData.xmlText = formatSvgfontText(xml);
+        const { svgText, font } = await fontBase64ToSvgFont(fontText);
+        fontData.font = font;
+        fontData.xmlText = formatSvgfontText(svgText);
 
         // 2. set glyphs
         fontData.glyphs = getGlyphsFromSvgFont(fontData.xmlText);

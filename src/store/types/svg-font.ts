@@ -14,7 +14,7 @@ export type FontAttributes = {
 }
 
 export type GlyphAttributes = {
-    "glyph-name": string;
+    "glyph-name"?: string | undefined; // in many cases it is empty string
     unicode: string;
     d: string;
 }

@@ -28,7 +28,7 @@ export function GlyphsGrid() {
     return (
         <div className="text-xs grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]">
             {snap.map((glyph) => (
-                <GlyphCell glyph={glyph} key={`${glyph.unicode}${glyph['glyph-name']}`} />
+                <GlyphCell glyph={glyph} key={`${glyph.unicode}${glyph['glyph-name'] || ''}`} />
             ))}
         </div>
     );

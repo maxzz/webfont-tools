@@ -1,6 +1,7 @@
 import { proxy, subscribe } from "valtio";
 import { GlyphAttributes } from "./types";
 import * as tests from './tests';
+import { FontEditor } from "fonteditor-core";
 
 // Source text for the font
 
@@ -22,19 +23,21 @@ type DataUri = {
 };
 
 export type FontData = {
-    fontText: string;
+    fontText: string;                       // font text entered by user
+    dataUri?: DataUri | undefined | null;   // ?? for future use
+    isUrl?: boolean;                        // ?? for future use
 
-    dataUri?: DataUri | undefined | null;
-    isUrl?: boolean;
+    xmlText: string;                        // svg text of the font
+    glyphs: GlyphAttributes[];              // font glyphs from svg font text
 
-    xmlText: string;
-    glyphs: GlyphAttributes[];
+    font: FontEditor.Font | null;
 };
 
 export const fontData = proxy<FontData>({
     fontText: fontDataSource.text,
     xmlText: '',
     glyphs: [],
+    font: null,
 });
 
 // Source text for the font parsing
