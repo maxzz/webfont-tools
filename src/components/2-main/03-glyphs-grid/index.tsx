@@ -29,7 +29,7 @@ function GlyphCell({ glyph, ...rest }: { glyph: GlyphAttributes; } & HTMLAttribu
 export function GlyphsGrid() {
     const snap = useSnapshot(fontData).glyphs;
     return (
-        <div className="text-xs grid grid-cols-[repeat(auto-fit,minmax(6rem,1fr))]">
+        <div className="text-xs grid grid-cols-[repeat(auto-fit,minmax(3rem,1fr))]">
             {snap.map((glyph) => (
                 <GlyphCell glyph={glyph} key={`${glyph.unicode}${glyph['glyph-name'] || ''}`} />
             ))}
