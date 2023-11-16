@@ -1,4 +1,4 @@
-import { Font, FontEditor, woff2 } from 'fonteditor-core';
+import { Font, FontEditor, TTF, woff2 } from 'fonteditor-core';
 import { base64ToArrayBuffer } from '@/utils';
 
 type CreateFontFromBufferOptions = {
@@ -7,12 +7,12 @@ type CreateFontFromBufferOptions = {
 
 type CreateFontResult = {
     font: FontEditor.Font;
-    svgText: string
+    svgText: string;
 };
 
 export async function createFontFromBuffer(buffer: ArrayBuffer, { srcType }: CreateFontFromBufferOptions): Promise<FontEditor.Font> {
     await woff2.init('./woff2.wasm');
-    
+
     const font = Font.create(buffer, {  // read font data, support ArrayBuffer | Buffer | string
         type: srcType,                  // support ttf, woff, woff2, eot, otf, svg
         //subset: [65, 66],           // only read `a`, `b` glyphs
@@ -27,6 +27,9 @@ export async function createFontFromBuffer(buffer: ArrayBuffer, { srcType }: Cre
 
 export async function fontWoff2FileToSvgFont(buffer: ArrayBuffer): Promise<CreateFontResult> {
     const font = await createFontFromBuffer(buffer, { srcType: 'woff2' });
+
+    const ttfObject: TTF.TTFObject = font.get();
+    console.log('ttfObject', ttfObject);
 
     console.log('font', font);
 
