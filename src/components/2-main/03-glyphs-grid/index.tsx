@@ -9,8 +9,7 @@ function GlyphCell({ glyph, ...rest }: { glyph: GlyphAttributes; } & HTMLAttribu
 
             <div className="grid">
                 <div className="border-primary-400 border rounded grid place-items-center">
-                    {/* <svg className="w-16 h-16 bg-blue-300" viewBox="0 0 512 512" transform="scale(1,-1)"> */}
-                    <svg className="w-16 h-16 fill-foreground bg-background" viewBox="0 0 512 512">
+                    <svg className="fill-foreground bg-background" viewBox="0 0 512 512">
                         <g transform="scale(1,-1) translate(0,-448) scale(0.9,0.9)">
                             <path d={glyph.d} />
                         </g>
