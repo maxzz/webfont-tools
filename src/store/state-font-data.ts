@@ -1,7 +1,7 @@
-import { proxy, subscribe } from "valtio";
+import { proxy, ref, subscribe } from "valtio";
 import { GlyphAttributes } from "./types";
-import * as tests from './tests';
 import { FontEditor } from "fonteditor-core";
+import * as tests from './tests';
 
 // Source text for the font
 
@@ -36,20 +36,14 @@ export type FontData = {
 export const fontData = proxy<FontData>({
     fontText: fontDataSource.text,
     xmlText: '',
-    glyphs: [],
+    glyphs: [], // TODO: do we need glyphs reactivity?
     font: null,
 });
 
 // Source text for the font parsing
 
-function init() {
+function initSubscriber() {
     const reDataUri = /^\s*data:(?<mime>[\w\/\+-]*);?(?<enc>(?:charset=[\w-]+)?);?(?<base>base64?),(?<data>[a-z0-9\!\$\&\'\,\(\)\*\+\,\;\=\-\.\_\~\:\@\/\?\%]*)\s*$/i;
-
-    updateUriData();
-
-    function updateUriData() {
-        fontData.dataUri = reDataUri.exec(fontDataSource.text)?.groups as DataUri;
-    }
 
     subscribe(fontDataSource, () => {
         fontData.fontText = fontDataSource.text;
@@ -61,6 +55,12 @@ function init() {
             //TODO: add url protocol processing
         }
     });
+
+    updateUriData();
+
+    function updateUriData() {
+        fontData.dataUri = reDataUri.exec(fontDataSource.text)?.groups as DataUri;
+    }
 }
 
-init();
+initSubscriber();
