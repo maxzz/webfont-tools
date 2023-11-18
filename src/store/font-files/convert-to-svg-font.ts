@@ -1,6 +1,6 @@
 import { GlyphAttributes } from "../types";
-import { fontData } from "../state-font-data";
-import { fontBase64ToSvgFont, fontWoff2FileToSvgFont } from "./create-font-from-buffer";
+import { fontData } from "./state-font-data";
+import { fontBase64ToSvgFont, fontWoff2FileToSvgFont } from "./create-font";
 import { formatSvgfontText, xml2Js } from "./xml-parse";
 import { toastWarning } from "@/components/ui";
 import { fileExt, loadFileData } from "@/utils";

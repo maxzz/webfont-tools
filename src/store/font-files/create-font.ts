@@ -15,7 +15,7 @@ export async function createFontFromBuffer(buffer: ArrayBuffer, { srcType }: Cre
 
     const font = Font.create(buffer, {  // read font data, support ArrayBuffer | Buffer | string
         type: srcType,                  // support ttf, woff, woff2, eot, otf, svg
-        //subset: [65, 66],           // only read `a`, `b` glyphs
+        //subset: [65, 66, 67, 68, 60, 70, 71, 72],           // only read `a`, `b` glyphs
         hinting: true,                  // save font hinting
         compound2simple: true,          // transform ttf compound glyph to simple
         inflate: undefined,             // inflate function for woff
@@ -42,7 +42,7 @@ export async function fontWoff2FileToSvgFont(buffer: ArrayBuffer): Promise<Creat
     };
 }
 /**
- * Create SVG font from base64 string
+ * Create SVG font from base64 string provided by user
  * @param base64 It can be with or without data uri 'data:application/font-woff2;base64,' protocol 
  * @returns Promise with SVG font as string
  */

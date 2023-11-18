@@ -1,7 +1,7 @@
 import { proxy, ref, subscribe } from "valtio";
-import { GlyphAttributes } from "./types";
+import { GlyphAttributes } from "../types";
 import { FontEditor } from "fonteditor-core";
-import * as tests from './tests';
+import * as tests from '../tests';
 
 // Source text for the font
 
