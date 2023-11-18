@@ -32,7 +32,9 @@ export function getGlyphsFromSvgFont(svgText: string): GlyphAttributes[] {
 
 function setFontAndAttrs(font: FontEditor.Font) {
     fontData.font = ref(font);
-    //.get().head.unitsPerEm
+    const ttfObject = font.get();
+    fontData.unitsPerEm = ttfObject.head.unitsPerEm || 512;
+    fontData.descent = ttfObject.hhea.descent || 0;
 }
 
 export async function convertTextToSvgFont() {
@@ -55,6 +57,8 @@ export async function convertTextToSvgFont() {
 
         fontData.xmlText = '';
         fontData.glyphs = [];
+        fontData.font = null;
+        fontData.unitsPerEm = 0;
     }
 }
 
@@ -79,11 +83,13 @@ export async function convertDroppedFilesToSvgFont(files: FileList): Promise<voi
         // 2. set glyphs
         fontData.glyphs = getGlyphsFromSvgFont(fontData.xmlText);
 
-        console.log('fontData.xmlText', fontData.xmlText);
+        //console.log('fontData.xmlText', fontData.xmlText);
     } catch (error) {
         toastWarning((error as Error)?.message || 'Failed to load image');
 
         fontData.xmlText = '';
         fontData.glyphs = [];
+        fontData.font = null;
+        fontData.unitsPerEm = 0;
     }
 }

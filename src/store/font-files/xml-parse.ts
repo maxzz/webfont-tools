@@ -27,7 +27,7 @@ export function formatXml(xml: string, tab = '  ') { // tab = optional indent va
                 indent = indent.substring(tab.length); // decrease indent by one 'tab'
             }
 
-            formatted.push(`${indent}<${node}>`); // this will create sorrounding <> that will be removed later
+            formatted.push(`${indent}<${node}>`); // this will create sorrounding <> on the first and last tags that will be removed later
 
             if (node.match(/^<?\w[^>]*[^\/]$/)) {
                 indent += tab; // increase indent

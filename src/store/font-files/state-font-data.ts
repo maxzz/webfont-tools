@@ -31,6 +31,8 @@ export type FontData = {
     glyphs: GlyphAttributes[];              // font glyphs from svg font text
 
     font: FontEditor.Font | null;
+    unitsPerEm: number;
+    descent: number;
 };
 
 export const fontData = proxy<FontData>({
@@ -38,6 +40,8 @@ export const fontData = proxy<FontData>({
     xmlText: '',
     glyphs: [], // TODO: do we need glyphs reactivity?
     font: null,
+    unitsPerEm: 0,
+    descent: 0,
 });
 
 // Source text for the font parsing
