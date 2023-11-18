@@ -9,9 +9,9 @@ function GlyphCell({ glyph, ...rest }: { glyph: GlyphAttributes; } & HTMLAttribu
 
             <div className="px-1 py-1 w-16 h-16 border-primary-400 rounded grid place-items-center group-hover:scale-[2] transition-transform">
                 <svg className="1fill-foreground bg-sky-400" viewBox="0 0 512 512" transform="scale(1,-1)">
-                {/* <svg className="1fill-foreground bg-sky-400/40" viewBox="0 0 1000 1000" transform="scale(1,-1)"> */}
+                    {/* <svg className="1fill-foreground bg-sky-400/40" viewBox="0 0 1000 1000" transform="scale(1,-1)"> */}
                     <g
-                        // transform="scale(1,-1) translate(0,-448) scale(0.9,0.9)"
+                    // transform="scale(1,-1) translate(0,-448) scale(0.9,0.9)"
                     >
                         <path d={glyph.d} />
                     </g>
@@ -28,10 +28,10 @@ function GlyphCell({ glyph, ...rest }: { glyph: GlyphAttributes; } & HTMLAttribu
 }
 
 export function GlyphsGrid() {
-    const snap = useSnapshot(fontData).glyphs;
+    const { glyphs: snapGlyphs } = useSnapshot(fontData);
     return (
-        <div className="text-xs grid grid-cols-[repeat(auto-fit,minmax(5rem,1fr))]">
-            {snap.map((glyph) => (
+        <div className="text-xs grid grid-cols-[repeat(auto-fill,minmax(5rem,1fr))]">
+            {snapGlyphs.map((glyph) => (
                 <GlyphCell glyph={glyph} key={`${glyph.unicode}${glyph['glyph-name'] || ''}`} />
             ))}
         </div>
