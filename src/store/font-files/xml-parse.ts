@@ -17,7 +17,6 @@ export function xml2Js(cnt: string) {
 // XML beautifier similar to https://gist.github.com/sente/1083506
 
 export function formatXml(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
-    tab = tab || '\t';
 
     const formatted: string[] = [];
     let indent = '';
@@ -28,48 +27,16 @@ export function formatXml(xml: string, tab = '  ') { // tab = optional indent va
                 indent = indent.substring(tab.length); // decrease indent by one 'tab'
             }
 
-            // formatted += `${indent}<${node}>\r\n`; //TODO: array.join('\r\n') will be more efficient here
-            formatted.push(`${indent}<${node}>`); //TODO: array.join('\r\n') will be more efficient here
-
-            //console.log('line', `${indent}<${node}>`);
+            formatted.push(`${indent}<${node}>`); // this will create sorrounding <> that will be removed later
 
             if (node.match(/^<?\w[^>]*[^\/]$/)) {
-                indent += tab;              // increase indent
+                indent += tab; // increase indent
             }
         }
     );
 
     const newLines = formatted.join('\r\n');
-
-    console.log('formatted', newLines.substring(1, newLines.length - 1), `\n\ndone`);
-
-    // return newLines.substring(1, newLines.length - 3);
-    return newLines.substring(1, newLines.length - 1);
-}
-
-export function formatXml1(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
-    tab = tab || '\t';
-
-    let formatted = '';
-    let indent = '';
-
-    xml.split(/>\s*</).forEach(
-        (node) => {
-            if (node.match(/^\/\w/)) {
-                indent = indent.substring(tab.length); // decrease indent by one 'tab'
-            }
-
-            formatted += `${indent}<${node}>\r\n`; //TODO: array.join('\r\n') will be more efficient here
-
-            if (node.match(/^<?\w[^>]*[^\/]$/)) {
-                indent += tab;              // increase indent
-            }
-        }
-    );
-
-    console.log('formatted', formatted.substring(1, formatted.length - 3), `\n\ndone`);
-
-    return formatted.substring(1, formatted.length - 3);
+    return newLines.substring(1, newLines.length - 1); // remove sorrounding <> that were added above
 }
 
 // Addition beautifications
