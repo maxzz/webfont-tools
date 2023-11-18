@@ -16,7 +16,7 @@ export function xml2Js(cnt: string) {
 
 // XML beautifier similar to https://gist.github.com/sente/1083506
 
-export function formatXml2(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
+export function formatXml(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
     tab = tab || '\t';
 
     const formatted: string[] = [];
@@ -31,18 +31,23 @@ export function formatXml2(xml: string, tab = '  ') { // tab = optional indent v
             // formatted += `${indent}<${node}>\r\n`; //TODO: array.join('\r\n') will be more efficient here
             formatted.push(`${indent}<${node}>`); //TODO: array.join('\r\n') will be more efficient here
 
+            //console.log('line', `${indent}<${node}>`);
+
             if (node.match(/^<?\w[^>]*[^\/]$/)) {
                 indent += tab;              // increase indent
             }
         }
     );
 
-    console.log('formatted', formatted.join('\r\n').substring(1, formatted.length - 3), `\n\ndone`);
+    const newLines = formatted.join('\r\n');
 
-    return formatted.join('\r\n').substring(1, formatted.length - 3);
+    console.log('formatted', newLines.substring(1, newLines.length - 1), `\n\ndone`);
+
+    // return newLines.substring(1, newLines.length - 3);
+    return newLines.substring(1, newLines.length - 1);
 }
 
-export function formatXml(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
+export function formatXml1(xml: string, tab = '  ') { // tab = optional indent value, default is tab (\t)
     tab = tab || '\t';
 
     let formatted = '';
